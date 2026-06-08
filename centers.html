@@ -164,13 +164,21 @@
       var markers = [];
 
       function renderDetail(d) {
+        var tel = d.phone.replace(/[^0-9]/g, "");
+        var mapQuery = encodeURIComponent(d.title + " " + d.addr);
         detailEl.innerHTML =
-          '<span class="region">' + d.region + '</span>' +
-          '<h3>' + d.title + '</h3>' +
-          '<p><span class="ic">📍</span>' + d.addr + '</p>' +
-          '<p><span class="ic">📞</span><a href="tel:' + d.phone.replace(/[^0-9]/g, "") + '">' + d.phone + '</a></p>' +
-          '<p><span class="ic">🕘</span>' + d.hours + '</p>' +
-          '<a class="btn btn--primary" href="#apply">이 센터로 상담 신청</a>';
+          '<div class="loc-detail-info">' +
+            '<span class="region">' + d.region + '</span>' +
+            '<h3>' + d.title + '</h3>' +
+            '<p><span class="ic">📍</span>' + d.addr + '</p>' +
+            '<p><span class="ic">📞</span><a href="tel:' + tel + '">' + d.phone + '</a></p>' +
+            '<p><span class="ic">🕘</span>' + d.hours + '</p>' +
+          '</div>' +
+          '<div class="loc-detail-actions">' +
+            '<a class="btn btn--ghost" href="tel:' + tel + '">📞 전화하기</a>' +
+            '<a class="btn btn--ghost" href="https://map.kakao.com/?q=' + mapQuery + '" target="_blank" rel="noopener">🗺️ 길찾기</a>' +
+            '<a class="btn btn--primary" href="#apply">✅ 상담 신청</a>' +
+          '</div>';
       }
 
       items.forEach(function (item, i) {
