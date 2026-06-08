@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>센터 찾기 · 상담 신청 | 와와 학습코칭센터</title>
-  <meta name="description" content="전국 와와 학습코칭센터를 찾아보고 무료 학습 진단을 신청하세요." />
+  <meta name="description" content="전국 와와 학습코칭센터를 지도에서 찾아보고 무료 학습 진단을 신청하세요." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="assets/css/style.css" />
@@ -40,26 +40,54 @@
       </div>
     </section>
 
-    <!-- 지점 목록 -->
+    <!-- 센터 로케이터 -->
     <section class="section">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">CENTERS</span>
           <h2>전국 주요 센터</h2>
-          <p>지도에서 위치를 확인하고, 아래 센터를 클릭하면 해당 위치로 이동합니다 (일부 예시)</p>
+          <p>왼쪽 목록에서 센터를 선택하면 오른쪽 지도와 상세 정보가 표시됩니다 (일부 예시)</p>
         </div>
-        <div id="center-map" class="reveal" aria-label="전국 센터 위치 지도"></div>
-        <div class="branch-grid">
-          <div class="branch reveal" data-lat="37.4979" data-lng="127.0276" data-title="강남 본원센터" data-addr="서울 강남구 테헤란로 123"><div class="region">서울</div><h3>강남 본원센터</h3><p>📍 서울 강남구 테헤란로 123</p><p>📞 02-1234-5678</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="37.5260" data-lng="126.8756" data-title="목동센터" data-addr="서울 양천구 목동로 45"><div class="region">서울</div><h3>목동센터</h3><p>📍 서울 양천구 목동로 45</p><p>📞 02-2345-6789</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="37.3669" data-lng="127.1083" data-title="분당 정자센터" data-addr="경기 성남시 분당구 정자일로 67"><div class="region">경기</div><h3>분당 정자센터</h3><p>📍 경기 성남시 분당구 정자일로 67</p><p>📞 031-123-4567</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="37.6583" data-lng="126.7700" data-title="일산 라페스타센터" data-addr="경기 고양시 일산동구 중앙로 89"><div class="region">경기</div><h3>일산 라페스타센터</h3><p>📍 경기 고양시 일산동구 중앙로 89</p><p>📞 031-234-5678</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="37.2509" data-lng="127.0710" data-title="수원 영통센터" data-addr="경기 수원시 영통구 봉영로 101"><div class="region">경기</div><h3>수원 영통센터</h3><p>📍 경기 수원시 영통구 봉영로 101</p><p>📞 031-345-6789</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="37.3895" data-lng="126.6398" data-title="송도센터" data-addr="인천 연수구 송도과학로 12"><div class="region">인천</div><h3>송도센터</h3><p>📍 인천 연수구 송도과학로 12</p><p>📞 032-123-4567</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="35.1693" data-lng="129.1300" data-title="해운대센터" data-addr="부산 해운대구 센텀중앙로 34"><div class="region">부산</div><h3>해운대센터</h3><p>📍 부산 해운대구 센텀중앙로 34</p><p>📞 051-123-4567</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="35.8268" data-lng="128.6300" data-title="수성센터" data-addr="대구 수성구 들안로 56"><div class="region">대구</div><h3>수성센터</h3><p>📍 대구 수성구 들안로 56</p><p>📞 053-123-4567</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
-          <div class="branch reveal" data-lat="36.3515" data-lng="127.3780" data-title="둔산센터" data-addr="대전 서구 둔산로 78"><div class="region">대전</div><h3>둔산센터</h3><p>📍 대전 서구 둔산로 78</p><p>📞 042-123-4567</p><p>🕘 평일 14:00~22:00</p><span class="map-link">🗺️ 지도에서 보기</span></div>
+
+        <div class="locator reveal">
+          <!-- 좌: 센터 목록 -->
+          <aside class="locator-list" id="locator-list" aria-label="센터 목록">
+            <div class="loc-item" data-lat="37.4979" data-lng="127.0276" data-title="강남 본원센터" data-region="서울" data-addr="서울 강남구 테헤란로 123" data-phone="02-1234-5678" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">서울</span><span class="loc-name">강남 본원센터</span><span class="loc-addr-mini">서울 강남구 테헤란로 123</span>
+            </div>
+            <div class="loc-item" data-lat="37.5260" data-lng="126.8756" data-title="목동센터" data-region="서울" data-addr="서울 양천구 목동로 45" data-phone="02-2345-6789" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">서울</span><span class="loc-name">목동센터</span><span class="loc-addr-mini">서울 양천구 목동로 45</span>
+            </div>
+            <div class="loc-item" data-lat="37.3669" data-lng="127.1083" data-title="분당 정자센터" data-region="경기" data-addr="경기 성남시 분당구 정자일로 67" data-phone="031-123-4567" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">경기</span><span class="loc-name">분당 정자센터</span><span class="loc-addr-mini">경기 성남시 분당구 정자일로 67</span>
+            </div>
+            <div class="loc-item" data-lat="37.6583" data-lng="126.7700" data-title="일산 라페스타센터" data-region="경기" data-addr="경기 고양시 일산동구 중앙로 89" data-phone="031-234-5678" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">경기</span><span class="loc-name">일산 라페스타센터</span><span class="loc-addr-mini">경기 고양시 일산동구 중앙로 89</span>
+            </div>
+            <div class="loc-item" data-lat="37.2509" data-lng="127.0710" data-title="수원 영통센터" data-region="경기" data-addr="경기 수원시 영통구 봉영로 101" data-phone="031-345-6789" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">경기</span><span class="loc-name">수원 영통센터</span><span class="loc-addr-mini">경기 수원시 영통구 봉영로 101</span>
+            </div>
+            <div class="loc-item" data-lat="37.3895" data-lng="126.6398" data-title="송도센터" data-region="인천" data-addr="인천 연수구 송도과학로 12" data-phone="032-123-4567" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">인천</span><span class="loc-name">송도센터</span><span class="loc-addr-mini">인천 연수구 송도과학로 12</span>
+            </div>
+            <div class="loc-item" data-lat="35.1693" data-lng="129.1300" data-title="해운대센터" data-region="부산" data-addr="부산 해운대구 센텀중앙로 34" data-phone="051-123-4567" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">부산</span><span class="loc-name">해운대센터</span><span class="loc-addr-mini">부산 해운대구 센텀중앙로 34</span>
+            </div>
+            <div class="loc-item" data-lat="35.8268" data-lng="128.6300" data-title="수성센터" data-region="대구" data-addr="대구 수성구 들안로 56" data-phone="053-123-4567" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">대구</span><span class="loc-name">수성센터</span><span class="loc-addr-mini">대구 수성구 들안로 56</span>
+            </div>
+            <div class="loc-item" data-lat="36.3515" data-lng="127.3780" data-title="둔산센터" data-region="대전" data-addr="대전 서구 둔산로 78" data-phone="042-123-4567" data-hours="평일 14:00 ~ 22:00">
+              <span class="loc-region">대전</span><span class="loc-name">둔산센터</span><span class="loc-addr-mini">대전 서구 둔산로 78</span>
+            </div>
+          </aside>
+
+          <!-- 우: 지도 + 상세정보 -->
+          <div class="locator-main">
+            <div id="center-map" aria-label="센터 위치 지도"></div>
+            <div class="loc-detail" id="loc-detail" aria-live="polite"></div>
+          </div>
         </div>
+
         <p style="text-align:center;color:var(--color-muted);margin-top:32px" class="reveal">그 외 100여 개 센터가 전국에서 운영 중입니다. 가까운 센터 안내는 <b class="text-primary">1599-1497</b>로 문의하세요.</p>
       </div>
     </section>
@@ -115,13 +143,16 @@
       <div class="footer-bottom"><div>© <span data-year>2026</span> 와와 학습코칭센터. All rights reserved. · 본 사이트는 데모용으로 제작되었습니다.</div><div class="links"><a href="#">이용약관</a><a href="#">개인정보처리방침</a></div></div>
     </div>
   </footer>
+
   <script src="assets/js/main.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
   <script>
     (function () {
       var mapEl = document.getElementById("center-map");
+      var detailEl = document.getElementById("loc-detail");
       if (!mapEl || typeof L === "undefined") return;
-      var cards = Array.prototype.slice.call(document.querySelectorAll(".branch[data-lat]"));
+      var items = Array.prototype.slice.call(document.querySelectorAll("#locator-list .loc-item"));
+      if (!items.length) return;
 
       var map = L.map("center-map", { scrollWheelZoom: false }).setView([36.5, 127.8], 7);
       L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
@@ -130,33 +161,49 @@
       }).addTo(map);
 
       var bounds = [];
-      cards.forEach(function (card) {
-        var lat = parseFloat(card.dataset.lat);
-        var lng = parseFloat(card.dataset.lng);
+      var markers = [];
+
+      function renderDetail(d) {
+        detailEl.innerHTML =
+          '<span class="region">' + d.region + '</span>' +
+          '<h3>' + d.title + '</h3>' +
+          '<p><span class="ic">📍</span>' + d.addr + '</p>' +
+          '<p><span class="ic">📞</span><a href="tel:' + d.phone.replace(/[^0-9]/g, "") + '">' + d.phone + '</a></p>' +
+          '<p><span class="ic">🕘</span>' + d.hours + '</p>' +
+          '<a class="btn btn--primary" href="#apply">이 센터로 상담 신청</a>';
+      }
+
+      items.forEach(function (item, i) {
+        var d = item.dataset;
+        var lat = parseFloat(d.lat), lng = parseFloat(d.lng);
         if (isNaN(lat) || isNaN(lng)) return;
-        var name = card.dataset.title || "";
-        var addr = card.dataset.addr || "";
+
         var marker = L.marker([lat, lng]).addTo(map)
-          .bindPopup("<b>" + name + "</b><br>" + addr);
+          .bindPopup("<b>" + d.title + "</b><br>" + d.addr);
+        markers.push(marker);
         bounds.push([lat, lng]);
 
-        function activate() {
-          cards.forEach(function (c) { c.classList.remove("active"); });
-          card.classList.add("active");
-        }
-        function focusCenter() {
-          map.setView([lat, lng], 15, { animate: true });
+        function select(pan) {
+          items.forEach(function (it) { it.classList.remove("active"); });
+          item.classList.add("active");
+          renderDetail(d);
           marker.openPopup();
-          activate();
-          if (window.innerWidth < 860) {
-            mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
+          if (pan) {
+            map.setView([lat, lng], 15, { animate: true });
+            if (window.innerWidth < 880) mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
           }
         }
-        card.addEventListener("click", focusCenter);
-        marker.on("click", activate);
+
+        item.addEventListener("click", function () { select(true); });
+        marker.on("click", function () { select(false); });
       });
 
       if (bounds.length) map.fitBounds(bounds, { padding: [40, 40] });
+
+      // 첫 센터를 기본 선택(상세정보 표시, 지도는 전체보기 유지)
+      items[0].classList.add("active");
+      renderDetail(items[0].dataset);
+      setTimeout(function () { map.invalidateSize(); }, 200);
     })();
   </script>
 </body>
