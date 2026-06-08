@@ -75,7 +75,7 @@
     }, 4000);
   });
 
-  /* ---- Demo form submit ---- */
+  /* ---- Demo form submit (시트 미연동 폼) ---- */
   document.querySelectorAll("form[data-demo]").forEach(function (form) {
     form.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -85,6 +85,47 @@
         msg.style.display = "block";
       }
       form.reset();
+    });
+  });
+
+  /* ---- Google Sheet 연동 폼 (Apps Script 웹앱으로 전송) ---- */
+  document.querySelectorAll("form[data-sheet]").forEach(function (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var endpoint = form.getAttribute("data-sheet");
+      var msg = form.querySelector(".form-result");
+      var btn = form.querySelector('button[type="submit"]');
+
+      function show(text, color) {
+        if (!msg) return;
+        msg.textContent = text;
+        msg.style.color = color || "var(--color-primary)";
+        msg.style.display = "block";
+      }
+
+      // 아직 시트 URL이 연결되지 않은 경우(데모)
+      if (!endpoint) {
+        show("✅ (데모) 구글 시트 연동 전입니다. 연동 후 실제로 저장됩니다.");
+        form.reset();
+        return;
+      }
+
+      var data = new URLSearchParams(new FormData(form));
+      var orig = btn ? btn.textContent : "";
+      if (btn) { btn.disabled = true; btn.textContent = "전송 중..."; }
+
+      // Apps Script 웹앱은 CORS 응답을 주지 않으므로 no-cors로 전송
+      fetch(endpoint, { method: "POST", mode: "no-cors", body: data })
+        .then(function () {
+          show("✅ 신청이 접수되었습니다. 빠른 시일 내에 연락드리겠습니다.");
+          form.reset();
+        })
+        .catch(function () {
+          show("⚠️ 전송에 실패했습니다. 잠시 후 다시 시도하거나 1599-1497로 연락 주세요.", "#ef4444");
+        })
+        .then(function () {
+          if (btn) { btn.disabled = false; btn.textContent = orig; }
+        });
     });
   });
 
