@@ -4,9 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>센터 찾기 · 상담 신청 | 와와 학습코칭센터</title>
-  <meta name="description" content="전국 와와 학습코칭센터를 지도에서 찾아보고 무료 학습 진단을 신청하세요." />
+  <meta name="description" content="전국 205개 와와 학습코칭센터를 지역별로 찾아보고 무료 학습 진단을 신청하세요." />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
   <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 <body>
@@ -35,59 +34,34 @@
       <div class="container">
         <div class="breadcrumb"><a href="index.html">홈</a> &nbsp;›&nbsp; 센터 찾기</div>
         <h1>가까운 <span class="text-primary">와와 센터</span>를 찾아보세요</h1>
-        <p>전국 120개 이상의 직영·가맹 센터에서 우리 아이에게 맞는 학습 코칭을 만나보세요.</p>
+        <p>전국 <b class="text-primary">205개</b> 센터에서 우리 아이에게 맞는 학습 코칭을 만나보세요.</p>
       </div>
     </section>
 
-    <!-- 센터 로케이터 -->
+    <!-- 센터 찾기 -->
     <section class="section">
       <div class="container">
         <div class="section-head reveal">
           <span class="eyebrow">CENTERS</span>
-          <h2>전국 주요 센터</h2>
-          <p>왼쪽 목록에서 센터를 선택하면 오른쪽 지도와 상세 정보가 표시됩니다 (일부 예시)</p>
+          <h2>전국 센터 찾기</h2>
+          <p>지역을 선택하거나, 센터명·지역·학교명으로 검색해 보세요</p>
         </div>
 
-        <div class="locator reveal">
-          <!-- 좌: 센터 목록 -->
-          <aside class="locator-list" id="locator-list" aria-label="센터 목록">
-            <div class="loc-item" data-lat="37.4979" data-lng="127.0276" data-title="강남 본원센터" data-region="서울" data-addr="서울 강남구 테헤란로 123" data-phone="02-1234-5678" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">서울</span><span class="loc-name">강남 본원센터</span><span class="loc-addr-mini">서울 강남구 테헤란로 123</span>
-            </div>
-            <div class="loc-item" data-lat="37.5260" data-lng="126.8756" data-title="목동센터" data-region="서울" data-addr="서울 양천구 목동로 45" data-phone="02-2345-6789" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">서울</span><span class="loc-name">목동센터</span><span class="loc-addr-mini">서울 양천구 목동로 45</span>
-            </div>
-            <div class="loc-item" data-lat="37.3669" data-lng="127.1083" data-title="분당 정자센터" data-region="경기" data-addr="경기 성남시 분당구 정자일로 67" data-phone="031-123-4567" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">경기</span><span class="loc-name">분당 정자센터</span><span class="loc-addr-mini">경기 성남시 분당구 정자일로 67</span>
-            </div>
-            <div class="loc-item" data-lat="37.6583" data-lng="126.7700" data-title="일산 라페스타센터" data-region="경기" data-addr="경기 고양시 일산동구 중앙로 89" data-phone="031-234-5678" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">경기</span><span class="loc-name">일산 라페스타센터</span><span class="loc-addr-mini">경기 고양시 일산동구 중앙로 89</span>
-            </div>
-            <div class="loc-item" data-lat="37.2509" data-lng="127.0710" data-title="수원 영통센터" data-region="경기" data-addr="경기 수원시 영통구 봉영로 101" data-phone="031-345-6789" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">경기</span><span class="loc-name">수원 영통센터</span><span class="loc-addr-mini">경기 수원시 영통구 봉영로 101</span>
-            </div>
-            <div class="loc-item" data-lat="37.3895" data-lng="126.6398" data-title="송도센터" data-region="인천" data-addr="인천 연수구 송도과학로 12" data-phone="032-123-4567" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">인천</span><span class="loc-name">송도센터</span><span class="loc-addr-mini">인천 연수구 송도과학로 12</span>
-            </div>
-            <div class="loc-item" data-lat="35.1693" data-lng="129.1300" data-title="해운대센터" data-region="부산" data-addr="부산 해운대구 센텀중앙로 34" data-phone="051-123-4567" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">부산</span><span class="loc-name">해운대센터</span><span class="loc-addr-mini">부산 해운대구 센텀중앙로 34</span>
-            </div>
-            <div class="loc-item" data-lat="35.8268" data-lng="128.6300" data-title="수성센터" data-region="대구" data-addr="대구 수성구 들안로 56" data-phone="053-123-4567" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">대구</span><span class="loc-name">수성센터</span><span class="loc-addr-mini">대구 수성구 들안로 56</span>
-            </div>
-            <div class="loc-item" data-lat="36.3515" data-lng="127.3780" data-title="둔산센터" data-region="대전" data-addr="대전 서구 둔산로 78" data-phone="042-123-4567" data-hours="평일 14:00 ~ 22:00">
-              <span class="loc-region">대전</span><span class="loc-name">둔산센터</span><span class="loc-addr-mini">대전 서구 둔산로 78</span>
-            </div>
-          </aside>
-
-          <!-- 우: 지도 + 상세정보 -->
-          <div class="locator-main">
-            <div id="center-map" aria-label="센터 위치 지도"></div>
-            <div class="loc-detail" id="loc-detail" aria-live="polite"></div>
+        <div class="center-finder reveal">
+          <div class="center-search">
+            <input type="search" id="center-search" placeholder="검색 (예: 분당, 첨단초, 강남구)" aria-label="센터 검색" autocomplete="off" />
           </div>
+          <div class="center-regions" id="center-regions" aria-label="지역 필터"></div>
+          <p class="center-count" id="center-count"></p>
         </div>
 
-        <p style="text-align:center;color:var(--color-muted);margin-top:32px" class="reveal">그 외 100여 개 센터가 전국에서 운영 중입니다. 가까운 센터 안내는 <b class="text-primary">1599-1497</b>로 문의하세요.</p>
+        <div class="center-grid" id="center-grid" aria-live="polite"></div>
+        <div class="center-empty" id="center-empty" hidden>검색 결과가 없습니다. 다른 검색어나 지역을 선택해 보세요.</div>
+        <div style="text-align:center;margin-top:36px">
+          <button type="button" class="btn btn--ghost btn--lg" id="center-more" hidden>더 보기</button>
+        </div>
+
+        <p style="text-align:center;color:var(--color-muted);margin-top:36px" class="reveal">찾으시는 센터가 없거나 신규 개설 문의는 <b class="text-primary">1599-1497</b>로 연락 주세요.</p>
       </div>
     </section>
 
@@ -144,73 +118,91 @@
   </footer>
 
   <script src="assets/js/main.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="assets/js/centers-data.js"></script>
   <script>
     (function () {
-      var mapEl = document.getElementById("center-map");
-      var detailEl = document.getElementById("loc-detail");
-      if (!mapEl || typeof L === "undefined") return;
-      var items = Array.prototype.slice.call(document.querySelectorAll("#locator-list .loc-item"));
-      if (!items.length) return;
+      var DATA = window.WAWA_CENTERS || [];
+      var gridEl = document.getElementById("center-grid");
+      var regionsEl = document.getElementById("center-regions");
+      var searchEl = document.getElementById("center-search");
+      var countEl = document.getElementById("center-count");
+      var emptyEl = document.getElementById("center-empty");
+      var moreBtn = document.getElementById("center-more");
+      if (!gridEl || !DATA.length) return;
 
-      var map = L.map("center-map", { scrollWheelZoom: false }).setView([36.5, 127.8], 7);
-      L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-      }).addTo(map);
+      var PAGE = 30;
+      var shown = PAGE;
+      var activeRegion = "전체";
+      var keyword = "";
 
-      var bounds = [];
-      var markers = [];
+      // 지역별 개수 집계 + 정렬(개수 많은 순)
+      var counts = {};
+      DATA.forEach(function (c) { counts[c.region] = (counts[c.region] || 0) + 1; });
+      var regions = Object.keys(counts).sort(function (a, b) { return counts[b] - counts[a]; });
 
-      function renderDetail(d) {
-        var tel = d.phone.replace(/[^0-9]/g, "");
-        var mapQuery = encodeURIComponent(d.title + " " + d.addr);
-        detailEl.innerHTML =
-          '<div class="loc-detail-info">' +
-            '<span class="region">' + d.region + '</span>' +
-            '<h3>' + d.title + '</h3>' +
-            '<p><span class="ic">📍</span>' + d.addr + '</p>' +
-            '<p><span class="ic">📞</span><a href="tel:' + tel + '">' + d.phone + '</a></p>' +
-            '<p><span class="ic">🕘</span>' + d.hours + '</p>' +
-          '</div>' +
-          '<div class="loc-detail-actions">' +
-            '<a class="btn btn--ghost" href="tel:' + tel + '">📞 전화하기</a>' +
-            '<a class="btn btn--ghost" href="https://map.kakao.com/?q=' + mapQuery + '" target="_blank" rel="noopener">🗺️ 길찾기</a>' +
-            '<a class="btn btn--primary" href="#apply">✅ 상담 신청</a>' +
-          '</div>';
+      function makeBtn(label, region, active) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "region-btn" + (active ? " active" : "");
+        b.textContent = label;
+        b.setAttribute("data-region", region);
+        return b;
       }
+      regionsEl.appendChild(makeBtn("전체 " + DATA.length, "전체", true));
+      regions.forEach(function (r) { regionsEl.appendChild(makeBtn(r + " " + counts[r], r)); });
 
-      items.forEach(function (item, i) {
-        var d = item.dataset;
-        var lat = parseFloat(d.lat), lng = parseFloat(d.lng);
-        if (isNaN(lat) || isNaN(lng)) return;
-
-        var marker = L.marker([lat, lng]).addTo(map)
-          .bindPopup("<b>" + d.title + "</b><br>" + d.addr);
-        markers.push(marker);
-        bounds.push([lat, lng]);
-
-        function select(pan) {
-          items.forEach(function (it) { it.classList.remove("active"); });
-          item.classList.add("active");
-          renderDetail(d);
-          marker.openPopup();
-          if (pan) {
-            map.setView([lat, lng], 15, { animate: true });
-            if (window.innerWidth < 880) mapEl.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-        }
-
-        item.addEventListener("click", function () { select(true); });
-        marker.on("click", function () { select(false); });
+      regionsEl.addEventListener("click", function (e) {
+        var btn = e.target.closest(".region-btn");
+        if (!btn) return;
+        activeRegion = btn.getAttribute("data-region");
+        Array.prototype.forEach.call(regionsEl.children, function (c) { c.classList.toggle("active", c === btn); });
+        shown = PAGE;
+        render();
       });
 
-      if (bounds.length) map.fitBounds(bounds, { padding: [40, 40] });
+      searchEl.addEventListener("input", function () {
+        keyword = this.value.trim().toLowerCase();
+        shown = PAGE;
+        render();
+      });
 
-      // 첫 센터를 기본 선택(상세정보 표시, 지도는 전체보기 유지)
-      items[0].classList.add("active");
-      renderDetail(items[0].dataset);
-      setTimeout(function () { map.invalidateSize(); }, 200);
+      function filtered() {
+        return DATA.filter(function (c) {
+          if (activeRegion !== "전체" && c.region !== activeRegion) return false;
+          if (!keyword) return true;
+          var hay = (c.name + " " + c.region + " " + c.addr + " " + c.elem + " " + c.mid + " " + c.high).toLowerCase();
+          return hay.indexOf(keyword) >= 0;
+        });
+      }
+
+      function schoolRow(label, val) {
+        if (!val) return "";
+        return '<div class="cs-row"><b>' + label + "</b><span>" + val + "</span></div>";
+      }
+
+      function render() {
+        var list = filtered();
+        countEl.textContent = "총 " + list.length + "개 센터";
+        var slice = list.slice(0, shown);
+        gridEl.innerHTML = slice.map(function (c) {
+          var tel = c.phone.replace(/[^0-9]/g, "");
+          var q = encodeURIComponent(c.name + " " + c.addr);
+          return '<article class="center-card">' +
+            '<div class="cc-head"><span class="cc-region">' + c.region + "</span><h3>" + c.name + "</h3></div>" +
+            '<p class="cc-addr"><span class="ic">📍</span>' + c.addr + "</p>" +
+            '<div class="cc-schools">' + schoolRow("초", c.elem) + schoolRow("중", c.mid) + schoolRow("고", c.high) + "</div>" +
+            '<div class="cc-actions">' +
+              '<a class="btn btn--ghost btn--sm" href="tel:' + tel + '">📞 전화</a>' +
+              '<a class="btn btn--primary btn--sm" href="https://map.kakao.com/?q=' + q + '" target="_blank" rel="noopener">🗺️ 길찾기</a>' +
+            "</div>" +
+          "</article>";
+        }).join("");
+        emptyEl.hidden = list.length !== 0;
+        moreBtn.hidden = list.length <= shown;
+      }
+
+      moreBtn.addEventListener("click", function () { shown += PAGE; render(); });
+      render();
     })();
   </script>
 </body>
