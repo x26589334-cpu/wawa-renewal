@@ -88,23 +88,34 @@
             </div>
             <div class="form-grid2">
               <div class="form-row"><label for="phone">학부모 연락처 *</label><input id="phone" name="phone" type="tel" placeholder="010-0000-0000" required /></div>
-              <div class="form-row"><label for="area">희망 지역</label><input id="area" name="area" type="text" placeholder="예: 분당 정자동" /></div>
+              <div class="form-row"><label for="area">거주 도로명주소</label><input id="area" name="area" type="text" placeholder="예: 서울 강남구 테헤란로 123" /></div>
             </div>
             <div class="form-row"><label for="memo">상담 요청 내용</label><textarea id="memo" name="memo" rows="4" placeholder="아이의 학습 고민이나 궁금한 점을 적어주세요"></textarea></div>
             <div class="form-row" style="display:flex;align-items:center;gap:8px"><input type="checkbox" id="agree" name="agree" style="width:auto" required /><label for="agree" style="margin:0;font-weight:500;font-size:14px;color:var(--color-muted)">개인정보 수집 및 이용에 동의합니다.</label></div>
-            <button type="submit" class="btn btn--primary btn--lg" style="width:100%">무료 진단 신청하기</button>
+            <button type="submit" class="btn btn--primary btn--lg" style="width:100%">상담 신청</button>
             <p class="form-result" style="display:none;text-align:center;margin-top:16px;color:var(--color-primary);font-weight:700"></p>
           </form>
         </div>
       </div>
     </section>
+
+    <!-- 지도 팝업 -->
+    <div class="map-modal" id="map-modal" hidden>
+      <div class="map-modal-bg" data-close></div>
+      <div class="map-modal-box" role="dialog" aria-modal="true" aria-labelledby="map-modal-title">
+        <button class="map-modal-close" data-close aria-label="닫기">✕</button>
+        <h3 id="map-modal-title"></h3>
+        <p id="map-modal-addr" class="map-modal-addr"></p>
+        <div class="map-modal-frame"><iframe id="map-modal-iframe" title="센터 위치 지도" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+        <a id="map-modal-kakao" class="btn btn--ghost btn--sm" target="_blank" rel="noopener">카카오맵에서 길찾기 ↗</a>
+      </div>
+    </div>
   </main>
 
   <footer class="site-footer">
     <div class="container">
       <div class="footer-top">
         <div class="footer-brand">
-          <a href="index.html" class="logo"><span class="mark"></span>와와 학습코칭센터</a>
           <p>10년 학습코칭 노하우로 완성한 자기주도학습 코칭. 우리 아이가 스스로 공부하는 힘을 키웁니다.</p>
         </div>
         <div class="footer-col"><h4>바로가기</h4><a href="about.html">브랜드 소개</a><a href="learning.html">학습 시스템</a><a href="centers.html">센터 찾기</a><a href="reviews.html">학습 후기</a></div>
@@ -191,7 +202,7 @@
             '<div class="cc-schools">' + schoolRow("초", c.elem) + schoolRow("중", c.mid) + schoolRow("고", c.high) + "</div>" +
             '<div class="cc-actions">' +
               '<a class="btn btn--ghost btn--sm" href="tel:' + tel + '">📞 전화</a>' +
-              '<a class="btn btn--primary btn--sm" href="https://map.kakao.com/?q=' + q + '" target="_blank" rel="noopener">🗺️ 길찾기</a>' +
+              '<button type="button" class="btn btn--primary btn--sm cc-map-btn" data-name="' + c.name + '" data-addr="' + c.addr + '">🗺️ 지도 보기</button>' +
             "</div>" +
           "</article>";
         }).join("");
@@ -201,6 +212,28 @@
 
       moreBtn.addEventListener("click", function () { shown += PAGE; render(); });
       render();
+
+      // 지도 팝업 (사이트 내 임베드)
+      var modal = document.getElementById("map-modal");
+      var mFrame = document.getElementById("map-modal-iframe");
+      var mTitle = document.getElementById("map-modal-title");
+      var mAddr = document.getElementById("map-modal-addr");
+      var mKakao = document.getElementById("map-modal-kakao");
+      function closeModal() { modal.hidden = true; mFrame.src = ""; document.body.style.overflow = ""; }
+      gridEl.addEventListener("click", function (e) {
+        var btn = e.target.closest(".cc-map-btn");
+        if (!btn) return;
+        var name = btn.getAttribute("data-name"), addr = btn.getAttribute("data-addr");
+        var query = encodeURIComponent(name + " " + addr);
+        mFrame.src = "https://maps.google.com/maps?q=" + query + "&z=16&hl=ko&output=embed";
+        mTitle.textContent = name;
+        mAddr.textContent = addr;
+        mKakao.href = "https://map.kakao.com/?q=" + query;
+        modal.hidden = false;
+        document.body.style.overflow = "hidden";
+      });
+      modal.addEventListener("click", function (e) { if (e.target.hasAttribute("data-close")) closeModal(); });
+      document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !modal.hidden) closeModal(); });
     })();
   </script>
 </body>
