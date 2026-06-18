@@ -411,6 +411,21 @@ h1, h2, h3, h4 {
 .map-modal-frame { border: 1.5px solid var(--color-line); aspect-ratio: 16/10; margin-bottom: 16px; }
 .map-modal-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 
+/* 약관 / 개인정보처리방침 */
+.legal { max-width: 860px; font-family: var(--font-sans); }
+.legal .updated { font-size: 14px; color: var(--color-muted); margin-bottom: 30px; }
+.legal h2 { font-family: var(--font-serif); font-size: 22px; margin: 38px 0 14px; padding-top: 18px; border-top: 1.5px solid var(--color-line); }
+.legal h2:first-of-type { margin-top: 0; padding-top: 0; border-top: 0; }
+.legal h3 { font-size: 16px; margin: 22px 0 8px; }
+.legal p { font-size: 15px; color: var(--color-text); margin-bottom: 12px; line-height: 1.85; }
+.legal ul { margin: 0 0 14px; padding: 0; }
+.legal li { font-size: 15px; color: var(--color-text); line-height: 1.8; padding-left: 16px; position: relative; margin-bottom: 6px; }
+.legal li::before { content: "·"; position: absolute; left: 4px; color: var(--color-primary); font-weight: 800; }
+.legal table { width: 100%; border-collapse: collapse; margin: 10px 0 18px; font-size: 14px; }
+.legal th, .legal td { border: 1px solid var(--color-line); padding: 10px 12px; text-align: left; vertical-align: top; }
+.legal th { background: var(--color-bg-soft); font-weight: 700; white-space: nowrap; }
+.legal .note { font-size: 13px; color: var(--color-muted); background: var(--color-bg-soft); border: 1px solid var(--color-line); padding: 14px 16px; border-radius: 6px; margin-top: 8px; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .center-grid { grid-template-columns: repeat(2, 1fr); }
