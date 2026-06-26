@@ -211,4 +211,8 @@
   <url><loc>https://wawaedu.kr/c/%EB%8F%88%EC%95%94%EC%A0%90.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wawaedu.kr/c/%EB%8F%99%EC%86%8C%EB%AC%B8%EC%A0%90.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://wawaedu.kr/c/%EC%83%81%EC%95%94%EC%A0%90.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://wawaedu.kr/guide.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://wawaedu.kr/diagnosis.html</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://wawaedu.kr/guide-self-directed.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://wawaedu.kr/guide-middle-math.html</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>

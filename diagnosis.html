@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EBYGRP9K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G8EBYGRP9K');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <title>무료 학습유형 진단 테스트 | 우리 아이 공부 성향 알아보기 — 와와 학습코칭센터</title>
+  <meta name="description" content="1분 학습유형 진단 테스트. 7개 질문으로 우리 아이의 공부 성향(계획형·몰입형·코칭형·자기주도형)을 진단하고 맞춤 학습 코칭 방향을 확인하세요." />
+  <link rel="canonical" href="https://wawaedu.kr/diagnosis.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="와와 학습코칭센터" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:url" content="https://wawaedu.kr/diagnosis.html" />
+  <meta property="og:title" content="무료 학습유형 진단 테스트 | 와와 학습코칭센터" />
+  <meta property="og:description" content="1분 학습유형 진단으로 우리 아이 공부 성향(계획형·몰입형·코칭형·자기주도형)을 확인하고 맞춤 학습 코칭 방향을 찾아보세요." />
+  <meta property="og:image" content="https://wawaedu.kr/assets/images/academy-interior.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo"><img src="assets/images/logo.png" alt="와와 학습코칭센터" class="logo-img" /></a>
+      <nav class="main-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="about.html">브랜드 소개</a></li>
+          <li><a href="learning.html">학습 시스템</a></li>
+          <li><a href="centers.html">센터 찾기</a></li>
+          <li><a href="guide.html">학습 가이드</a></li>
+          <li><a href="reviews.html">학습 후기</a></li>
+          <li><a href="news.html">소식·FAQ</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a href="centers.html" class="btn btn--primary">상담 신청</a>
+        <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="index.html">홈</a> &nbsp;›&nbsp; 학습유형 진단</div>
+        <h1>1분 <span class="text-primary">학습유형 진단</span> 테스트</h1>
+        <p>7개 질문으로 우리 아이의 공부 성향과 맞는 학습 코칭 방향을 확인해 보세요.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <!-- 퀴즈 -->
+        <div class="quiz" id="quiz">
+          <div class="quiz-progress"><div class="quiz-progress-bar" id="bar"></div></div>
+          <div class="quiz-count" id="count"></div>
+          <div class="quiz-q" id="question"></div>
+          <div class="quiz-options" id="options"></div>
+          <div class="quiz-nav"><button class="quiz-back" id="back" hidden>← 이전</button><span></span></div>
+        </div>
+
+        <!-- 결과 -->
+        <div class="quiz-result" id="result" hidden>
+          <span class="badge">학습유형 진단 결과</span>
+          <div class="icon" id="r-icon"></div>
+          <h2 id="r-title"></h2>
+          <p class="desc" id="r-desc"></p>
+          <div class="traits" id="r-traits"></div>
+          <div class="hero-actions" style="justify-content:center">
+            <a href="centers.html" class="btn btn--primary btn--lg">맞춤 상담 신청</a>
+            <button class="btn btn--ghost btn--lg" id="retry">다시 진단하기</button>
+          </div>
+          <p style="font-family:var(--font-sans);font-size:13px;color:var(--color-muted);margin-top:22px">※ 본 진단은 학습 성향 참고용 간이 테스트입니다. 정확한 진단은 와와 센터의 무료 학습 진단에서 받아보실 수 있습니다.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">와와 학습코칭센터</a>
+          <p>10년 학습코칭 노하우로 완성한 자기주도학습 코칭.<br />우리 아이가 스스로 공부하는 힘을 키웁니다.</p>
+        </div>
+        <div class="footer-col"><h4>바로가기</h4><a href="about.html">브랜드 소개</a><a href="learning.html">학습 시스템</a><a href="centers.html">센터 찾기</a><a href="reviews.html">학습 후기</a></div>
+        <div class="footer-col"><h4>고객지원</h4><a href="news.html">공지사항</a><a href="news.html">자주 묻는 질문</a><a href="centers.html">상담 신청</a></div>
+        <div class="footer-col"><h4>브랜드</h4><a href="about.html">와와</a><a href="about.html">더블유플러스</a><a href="about.html">글로리드</a><a href="about.html">모두오름</a></div>
+      </div>
+      <div class="footer-bottom"><div>© <span data-year>2026</span> 와와 학습코칭센터. All rights reserved.</div></div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script>
+    (function () {
+      var QUESTIONS = [
+        { q: "시험 기간이 다가오면 우리 아이는?", a: [
+          { t: "A", txt: "공부 계획표부터 세운다" },
+          { t: "B", txt: "한 과목에 몰아서 집중한다" },
+          { t: "C", txt: "누가 옆에서 챙겨주면 좋겠다고 한다" },
+          { t: "D", txt: "자기 방식대로 알아서 준비한다" } ] },
+        { q: "공부할 때 가장 힘들어하는 점은?", a: [
+          { t: "A", txt: "계획은 세우는데 지키기 어려워한다" },
+          { t: "B", txt: "집중이 자꾸 흐트러진다" },
+          { t: "C", txt: "혼자 하면 자꾸 미룬다" },
+          { t: "D", txt: "뭘 해야 할지 방향을 잘 모른다" } ] },
+        { q: "공부가 가장 잘 되는 순간은?", a: [
+          { t: "A", txt: "할 일이 깔끔하게 정리되어 있을 때" },
+          { t: "B", txt: "조용히 몰입할 환경일 때" },
+          { t: "C", txt: "함께 하거나 칭찬받을 때" },
+          { t: "D", txt: "스스로 목표를 정했을 때" } ] },
+        { q: "모르는 문제나 오답을 만나면?", a: [
+          { t: "A", txt: "따로 정리해두고 계획에 넣는다" },
+          { t: "B", txt: "이해될 때까지 붙잡고 푼다" },
+          { t: "C", txt: "선생님이나 친구에게 물어본다" },
+          { t: "D", txt: "스스로 찾아보며 해결한다" } ] },
+        { q: "학습 플래너(계획표)에 대해서는?", a: [
+          { t: "A", txt: "꼭 필요하고 잘 활용한다" },
+          { t: "B", txt: "있으면 좋지만 집중이 먼저다" },
+          { t: "C", txt: "같이 점검해주면 쓴다" },
+          { t: "D", txt: "굳이 안 써도 머릿속에 계획이 있다" } ] },
+        { q: "가장 동기부여가 되는 순간은?", a: [
+          { t: "A", txt: "계획대로 해냈을 때의 성취감" },
+          { t: "B", txt: "한 분야를 깊이 파고들 때" },
+          { t: "C", txt: "인정받고 응원받을 때" },
+          { t: "D", txt: "스스로 정한 목표에 다가갈 때" } ] },
+        { q: "부모님·선생님께 가장 바라는 것은?", a: [
+          { t: "A", txt: "체계적인 학습 관리" },
+          { t: "B", txt: "집중할 수 있는 환경" },
+          { t: "C", txt: "꾸준한 동기부여와 점검" },
+          { t: "D", txt: "믿고 맡겨주는 것" } ] }
+      ];
+
+      var RESULTS = {
+        A: { icon: "🎯", title: "계획·관리형", desc: "스스로 계획을 세우는 힘이 있는 아이예요. 다만 '세운 계획을 끝까지 실행'하는 데 도움이 필요합니다. 매일의 실행을 점검해주는 코칭이 가장 잘 맞습니다.",
+          traits: [["강점","계획 수립·정리 능력"],["보완할 점","계획의 꾸준한 실행"],["와와의 추천 코칭","4C 프로세스 + 학습 플래너 점검"],["함께하면 좋은 것","매일 실행 관리"]] },
+        B: { icon: "🔥", title: "집중·몰입형", desc: "한번 빠지면 깊게 파고드는 아이예요. 몰입할 환경과 과목별 심화 학습이 잘 맞습니다. 흥미를 학습 전반으로 넓혀주는 코칭이 효과적입니다.",
+          traits: [["강점","깊은 집중력·몰입"],["보완할 점","과목 간 균형"],["와와의 추천 코칭","과목별 전문 코치의 1:1 심화"],["함께하면 좋은 것","집중 학습 환경"]] },
+        C: { icon: "🤝", title: "동기·코칭형", desc: "함께할 때 힘이 나는 아이예요. 전담 코치의 꾸준한 관리와 소통, 칭찬이 학습 습관을 만듭니다. 혼자보다 '같이'가 핵심입니다.",
+          traits: [["강점","소통·관계 속 성장"],["보완할 점","혼자서의 자기 관리"],["와와의 추천 코칭","전담 코치 매일 관리·면담"],["함께하면 좋은 것","주간 리포트·가정 연계"]] },
+        D: { icon: "🧭", title: "자기주도형", desc: "스스로 하는 힘이 있는 아이예요. 방향만 잡아주면 멀리 갑니다. AI 학습 분석으로 약점을 효율적으로 채우고, 목표 설계를 도와주는 코칭이 잘 맞습니다.",
+          traits: [["강점","자기주도·실행력"],["보완할 점","효율적 방향 설정"],["와와의 추천 코칭","AI 학습 분석 + 목표 설계"],["함께하면 좋은 것","데이터 기반 점검"]] }
+      };
+
+      var idx = 0, answers = [];
+      var quiz = document.getElementById("quiz"), result = document.getElementById("result");
+      var bar = document.getElementById("bar"), countEl = document.getElementById("count");
+      var qEl = document.getElementById("question"), optsEl = document.getElementById("options");
+      var backBtn = document.getElementById("back");
+
+      function render() {
+        var item = QUESTIONS[idx];
+        bar.style.width = (idx / QUESTIONS.length * 100) + "%";
+        countEl.textContent = "Q" + (idx + 1) + " / " + QUESTIONS.length;
+        qEl.textContent = item.q;
+        optsEl.innerHTML = "";
+        item.a.forEach(function (opt) {
+          var b = document.createElement("button");
+          b.className = "quiz-opt";
+          b.textContent = opt.txt;
+          b.onclick = function () { answers[idx] = opt.t; next(); };
+          optsEl.appendChild(b);
+        });
+        backBtn.hidden = idx === 0;
+      }
+      function next() { if (idx < QUESTIONS.length - 1) { idx++; render(); } else { showResult(); } }
+      backBtn.onclick = function () { if (idx > 0) { idx--; render(); } };
+
+      function showResult() {
+        var score = { A: 0, B: 0, C: 0, D: 0 };
+        answers.forEach(function (t) { score[t]++; });
+        var top = "A", max = -1;
+        ["A", "B", "C", "D"].forEach(function (k) { if (score[k] > max) { max = score[k]; top = k; } });
+        var r = RESULTS[top];
+        bar.style.width = "100%";
+        document.getElementById("r-icon").textContent = r.icon;
+        document.getElementById("r-title").textContent = r.title;
+        document.getElementById("r-desc").textContent = r.desc;
+        document.getElementById("r-traits").innerHTML = r.traits.map(function (tr) {
+          return '<div class="trait"><b>' + tr[0] + "</b>" + tr[1] + "</div>";
+        }).join("");
+        quiz.hidden = true; result.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      document.getElementById("retry").onclick = function () {
+        idx = 0; answers = []; result.hidden = true; quiz.hidden = false; render();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      };
+      render();
+    })();
+  </script>
+</body>
+</html>
