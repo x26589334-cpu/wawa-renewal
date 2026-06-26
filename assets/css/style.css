@@ -426,6 +426,58 @@ h1, h2, h3, h4 {
 .legal th { background: var(--color-bg-soft); font-weight: 700; white-space: nowrap; }
 .legal .note { font-size: 13px; color: var(--color-muted); background: var(--color-bg-soft); border: 1px solid var(--color-line); padding: 14px 16px; border-radius: 6px; margin-top: 8px; }
 
+/* ---------- 학습유형 진단 테스트 ---------- */
+.quiz { max-width: 720px; margin: 0 auto; }
+.quiz-progress { height: 8px; background: var(--color-line); border-radius: 999px; overflow: hidden; margin-bottom: 12px; }
+.quiz-progress-bar { height: 100%; width: 0; background: var(--color-primary); transition: width .3s ease; }
+.quiz-count { font-family: var(--font-sans); font-size: 14px; color: var(--color-muted); margin-bottom: 28px; }
+.quiz-q { font-family: var(--font-serif); font-size: clamp(22px, 3vw, 28px); font-weight: 800; line-height: 1.4; margin-bottom: 28px; color: var(--color-ink); }
+.quiz-options { display: flex; flex-direction: column; gap: 12px; }
+.quiz-opt {
+  text-align: left; font-family: var(--font-sans); font-size: 16px; font-weight: 600; color: var(--color-text);
+  background: var(--color-paper); border: 1.5px solid var(--color-line); border-radius: 10px; padding: 18px 20px;
+  cursor: pointer; transition: border-color .15s, background .15s, transform .1s;
+}
+.quiz-opt:hover { border-color: var(--color-primary); background: var(--color-primary-light); transform: translateY(-1px); }
+.quiz-nav { margin-top: 24px; display: flex; justify-content: space-between; }
+.quiz-back { font-family: var(--font-sans); font-size: 14px; color: var(--color-muted); background: none; border: none; cursor: pointer; }
+.quiz-back:hover { color: var(--color-ink); }
+/* 결과 */
+.quiz-result { max-width: 720px; margin: 0 auto; text-align: center; }
+.quiz-result .badge { display: inline-block; font-family: var(--font-sans); font-size: 13px; font-weight: 800; letter-spacing: .12em; color: var(--color-primary); background: var(--color-primary-light); padding: 8px 18px; border-radius: 999px; margin-bottom: 20px; }
+.quiz-result .icon { font-size: 64px; margin-bottom: 14px; }
+.quiz-result h2 { font-size: clamp(28px, 4vw, 40px); margin-bottom: 16px; }
+.quiz-result .desc { font-family: var(--font-sans); font-size: 17px; color: var(--color-text); line-height: 1.8; margin-bottom: 28px; }
+.quiz-result .traits { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; text-align: left; margin-bottom: 32px; }
+.quiz-result .trait { background: var(--color-paper); border: 1.5px solid var(--color-line); border-radius: 10px; padding: 16px 18px; font-family: var(--font-sans); font-size: 15px; }
+.quiz-result .trait b { display: block; color: var(--color-primary); margin-bottom: 4px; font-size: 13px; }
+
+/* ---------- 콘텐츠 허브 / 가이드 ---------- */
+.guide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.guide-card { display: flex; flex-direction: column; background: var(--color-paper); border: 1.5px solid var(--color-line); border-radius: 10px; overflow: hidden; transition: border-color .2s, transform .15s; }
+.guide-card:hover { border-color: var(--color-ink); transform: translateY(-3px); }
+.guide-card .thumb { aspect-ratio: 16/9; background: var(--color-primary-light); display: grid; place-items: center; font-size: 44px; }
+.guide-card .body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+.guide-card .cat { font-family: var(--font-sans); font-size: 12px; font-weight: 800; letter-spacing: .08em; color: var(--color-primary); margin-bottom: 10px; }
+.guide-card h3 { font-size: 19px; line-height: 1.4; margin-bottom: 10px; }
+.guide-card p { font-family: var(--font-sans); font-size: 14px; color: var(--color-muted); line-height: 1.6; margin-bottom: 16px; flex: 1; }
+.guide-card .more { font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-primary); }
+/* 아티클 본문(=legal 재사용 + 보강) */
+.article { max-width: 760px; margin: 0 auto; }
+.article .cta-inline { background: var(--color-bg-soft); border: 1.5px solid var(--color-line); border-radius: 12px; padding: 26px; text-align: center; margin: 36px 0; }
+.article .cta-inline h3 { font-size: 20px; margin-bottom: 10px; }
+.article .cta-inline p { font-family: var(--font-sans); font-size: 14px; color: var(--color-muted); margin-bottom: 18px; }
+
+/* 센터 카드 — 자세히 보기 링크 */
+.cc-detail { display: block; text-align: center; margin-top: 12px; font-family: var(--font-sans); font-size: 14px; font-weight: 700; color: var(--color-primary); text-decoration: none; }
+.cc-detail:hover { text-decoration: underline; }
+
+@media (max-width: 860px) {
+  .guide-grid { grid-template-columns: 1fr 1fr; }
+  .quiz-result .traits { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) { .guide-grid { grid-template-columns: 1fr; } }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 980px) {
   .center-grid { grid-template-columns: repeat(2, 1fr); }

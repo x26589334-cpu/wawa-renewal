@@ -226,6 +226,7 @@
               '<a class="btn btn--ghost btn--sm" href="tel:' + tel + '">📞 전화</a>' +
               '<button type="button" class="btn btn--primary btn--sm cc-map-btn" data-name="' + c.name + '" data-addr="' + c.addr + '">🗺️ 지도 보기</button>' +
             "</div>" +
+            (c.page ? '<a class="cc-detail" href="' + c.page + '">센터 자세히 보기 →</a>' : "") +
           "</article>";
         }).join("");
         emptyEl.hidden = list.length !== 0;
