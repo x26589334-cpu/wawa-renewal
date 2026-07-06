@@ -248,7 +248,7 @@
         return a.replace(/\([^)]*\)/g, "")
                 .replace(/\s*(와와학습|와와|모두오름|모두|더블유플러스|더블유|글로리드|WAWA|W\+).*$/, "")
                 .replace(/\s*(제\s*)?\d+\s*층.*$/, "")
-                .replace(/\s*[A-Za-z가-힣]*동?\s*\d{1,4}[,\d]*\s*호.*$/, "")
+                .replace(/\s*\d{1,4}(\s*,\s*\d+)*\s*호.*$/, "")
                 .replace(/\s+/g, " ").trim();
       }
       gridEl.addEventListener("click", function (e) {
