@@ -244,11 +244,18 @@
       var mAddr = document.getElementById("map-modal-addr");
       var mKakao = document.getElementById("map-modal-kakao");
       function closeModal() { modal.hidden = true; mFrame.src = ""; document.body.style.overflow = ""; }
+      function cleanAddr(a) {
+        return a.replace(/\([^)]*\)/g, "")
+                .replace(/\s*(와와학습|와와|모두오름|모두|더블유플러스|더블유|글로리드|WAWA|W\+).*$/, "")
+                .replace(/\s*(제\s*)?\d+\s*층.*$/, "")
+                .replace(/\s*[A-Za-z가-힣]*동?\s*\d{1,4}[,\d]*\s*호.*$/, "")
+                .replace(/\s+/g, " ").trim();
+      }
       gridEl.addEventListener("click", function (e) {
         var btn = e.target.closest(".cc-map-btn");
         if (!btn) return;
         var name = btn.getAttribute("data-name"), addr = btn.getAttribute("data-addr");
-        var mapQ = encodeURIComponent(addr);
+        var mapQ = encodeURIComponent(cleanAddr(addr));
         var kakaoQ = encodeURIComponent(name + " " + addr);
         mFrame.src = "https://maps.google.com/maps?q=" + mapQ + "&z=17&hl=ko&output=embed";
         mTitle.textContent = name;
