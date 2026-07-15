@@ -59,6 +59,7 @@
       <div class="container">
         <div id="post-count" class="section-head reveal" style="margin-bottom:32px"></div>
         <div id="post-grid" class="guide-grid"></div>
+        <nav id="post-pager" class="post-pager" aria-label="수업현황 페이지"></nav>
         <div id="post-empty" class="empty" hidden style="text-align:center;color:var(--color-muted);padding:60px 0">아직 등록된 수업현황 글이 없습니다.</div>
       </div>
     </section>
@@ -114,9 +115,20 @@
         emptyEl.hidden = false;
         return;
       }
-      countEl.innerHTML = '<span class="eyebrow">CLASS REPORT</span><h2>지점 <span class="text-accent">수업 후기</span> <span style="color:var(--color-muted);font-weight:700">' + posts.length + "건</span></h2>";
 
-      gridEl.innerHTML = posts.map(function (p) {
+      var PER_PAGE = 6;
+      var pagerEl = document.getElementById("post-pager");
+      var totalPages = Math.ceil(posts.length / PER_PAGE);
+
+      function getPage() {
+        var m = /[?&]page=(\d+)/.exec(location.search);
+        var n = m ? parseInt(m[1], 10) : 1;
+        if (!n || n < 1) n = 1;
+        if (n > totalPages) n = totalPages;
+        return n;
+      }
+
+      function cardHtml(p) {
         var href = "class/" + encodeURIComponent(p.slug) + ".html";
         var cat = esc((p.area ? p.area + " · " : "") + (p.branch || "") + (p.subject ? " · " + p.subject : ""));
         var thumb = p.thumb
@@ -134,7 +146,32 @@
             "</span>" +
           "</div>" +
         "</a>";
-      }).join("");
+      }
+
+      function pagerLink(page, label, opts) {
+        opts = opts || {};
+        if (opts.disabled) return '<span class="pg pg--disabled">' + label + "</span>";
+        if (opts.current) return '<span class="pg pg--current" aria-current="page">' + label + "</span>";
+        return '<a class="pg" href="?page=' + page + '#post-grid">' + label + "</a>";
+      }
+
+      function renderPage(page) {
+        var start = (page - 1) * PER_PAGE;
+        var slice = posts.slice(start, start + PER_PAGE);
+        countEl.innerHTML = '<span class="eyebrow">CLASS REPORT</span><h2>지점 <span class="text-accent">수업 후기</span> <span style="color:var(--color-muted);font-weight:700">' + posts.length + "건</span></h2>" +
+          '<p style="color:var(--color-muted);font-family:var(--font-sans);font-size:14px;margin-top:6px">' + page + " / " + totalPages + " 페이지</p>";
+        gridEl.innerHTML = slice.map(cardHtml).join("");
+
+        if (totalPages <= 1) { pagerEl.innerHTML = ""; return; }
+        var html = pagerLink(page - 1, "‹ 이전", { disabled: page === 1 });
+        for (var i = 1; i <= totalPages; i++) {
+          html += pagerLink(i, String(i), { current: i === page });
+        }
+        html += pagerLink(page + 1, "다음 ›", { disabled: page === totalPages });
+        pagerEl.innerHTML = html;
+      }
+
+      renderPage(getPage());
     })();
   </script>
   <script src="assets/js/main.js"></script>
