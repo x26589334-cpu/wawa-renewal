@@ -529,3 +529,9 @@ h1, h2, h3, h4 {
 .post-pager .pg:hover { border-color: var(--color-primary); color: var(--color-primary); }
 .post-pager .pg--current { background: var(--color-primary); border-color: var(--color-primary); color: #fff; }
 .post-pager .pg--disabled { opacity: .4; pointer-events: none; }
+
+/* 카톡 상담 플로팅 버튼 */
+.kakao-float { position: fixed; right: 22px; bottom: 22px; z-index: 9999; display: inline-flex; align-items: center; gap: 8px; background: #FEE500; color: #3C1E1E; padding: 14px 22px; border-radius: 999px; font-family: var(--font-sans); font-weight: 800; font-size: 15px; line-height: 1; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,.18); transition: transform .15s ease, box-shadow .15s ease; }
+.kakao-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.26); color: #3C1E1E; }
+.kakao-float-ic { font-size: 18px; }
+@media (max-width: 480px) { .kakao-float { right: 14px; bottom: 14px; padding: 12px 18px; font-size: 14px; } }

@@ -133,3 +133,16 @@
   var yr = document.querySelector("[data-year]");
   if (yr) yr.textContent = new Date().getFullYear();
 })();
+
+/* ---- 카톡 상담 플로팅 버튼 (전 페이지 공통) ---- */
+(function () {
+  if (document.querySelector(".kakao-float")) return;
+  var a = document.createElement("a");
+  a.className = "kakao-float";
+  a.href = "https://open.kakao.com/o/sg4iDU3c";
+  a.target = "_blank";
+  a.rel = "noopener noreferrer";
+  a.setAttribute("aria-label", "카카오톡 상담");
+  a.innerHTML = '<span class="kakao-float-ic" aria-hidden="true">💬</span><span class="kakao-float-tx">카톡 상담</span>';
+  document.body.appendChild(a);
+})();
