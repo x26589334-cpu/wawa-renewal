@@ -234,6 +234,13 @@
       }
 
       moreBtn.addEventListener("click", function () { shown += PAGE; render(); });
+
+      // 홈에서 넘어온 검색어(?q=) 자동 반영
+      var qm = /[?&]q=([^&]*)/.exec(location.search);
+      if (qm) {
+        var qv = decodeURIComponent(qm[1].replace(/\+/g, " "));
+        if (qv) { searchEl.value = qv; keyword = qv.trim().toLowerCase(); }
+      }
       render();
 
       // 지도 팝업 (사이트 내 임베드)

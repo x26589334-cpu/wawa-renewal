@@ -535,3 +535,25 @@ h1, h2, h3, h4 {
 .kakao-float:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0,0,0,.26); color: #3C1E1E; }
 .kakao-float-ic { font-size: 18px; }
 @media (max-width: 480px) { .kakao-float { right: 14px; bottom: 14px; padding: 12px 18px; font-size: 14px; } }
+
+/* 홈 히어로 — 센터 빠른 검색 */
+.home-search { margin: 22px 0 24px; }
+.home-search-lbl { display: block; font-family: var(--font-sans); font-size: 13px; font-weight: 800; letter-spacing: .04em; color: var(--color-primary); margin-bottom: 8px; }
+.home-search-row { display: flex; gap: 8px; }
+.home-search-row input { flex: 1; min-width: 0; padding: 14px 16px; border: 1.5px solid var(--color-line); border-radius: 10px; background: var(--color-paper); font-family: var(--font-sans); font-size: 15px; color: var(--color-ink); }
+.home-search-row input:focus { outline: none; border-color: var(--color-primary); }
+.home-search-row .btn { flex: 0 0 auto; padding: 14px 22px; }
+@media (max-width: 860px) {
+  /* 모바일: 검색창을 히어로 최상단으로 */
+  .hero-text { display: flex; flex-direction: column; }
+  .hero-text .home-search { order: -1; margin: 0 0 22px; }
+  .hero-text .hero-kicker { order: 0; }
+  .hero-text h1 { order: 1; }
+  .hero-text .lead { order: 2; }
+  .hero-text .hero-actions { order: 3; }
+  .hero-text .hero-meta { order: 4; }
+}
+@media (max-width: 420px) {
+  .home-search-row { flex-direction: column; }
+  .home-search-row .btn { width: 100%; }
+}
