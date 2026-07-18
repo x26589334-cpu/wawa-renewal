@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  입시뉴스 글 템플릿 — 새 글 만드는 법
+  ------------------------------------------------------------
+  1) 이 파일을 복사해서 news/{날짜}-{제목슬러그}.html 로 저장
+     예) news/2026-07-18-서울대-수시-일정.html
+  2) 아래 【】 부분을 실제 내용으로 바꾸기
+  3) assets/js/news-posts.js 맨 위에 항목 1개 추가
+  4) sitemap.xml 에 https://wawaedu.kr/news/{파일명}.html 한 줄 추가
+  ※ 대학·전형·일정·경쟁률 등 수치는 반드시 사실 확인 후 기재 (추측 금지)
+  ============================================================
+-->
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G8EBYGRP9K"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G8EBYGRP9K');
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
+  <title>【제목】 | 와와 입시뉴스</title>
+  <meta name="description" content="【한 줄 설명】" />
+  <meta name="keywords" content="입시뉴스, 대학입시, 【대학명】, 【전형】, 수시, 정시, 입시일정" />
+  <link rel="canonical" href="https://wawaedu.kr/news/【파일명】.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="와와 학습코칭센터" />
+  <meta property="og:locale" content="ko_KR" />
+  <meta property="og:url" content="https://wawaedu.kr/news/【파일명】.html" />
+  <meta property="og:title" content="【제목】" />
+  <meta property="og:description" content="【한 줄 설명】" />
+  <meta property="og:image" content="https://wawaedu.kr/assets/images/hero-coaching.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"NewsArticle","headline":"【제목】","datePublished":"【YYYY-MM-DD】","dateModified":"【YYYY-MM-DD】","description":"【한 줄 설명】","inLanguage":"ko-KR","author":{"@type":"Organization","name":"와와 학습코칭센터"},"publisher":{"@type":"Organization","name":"와와 학습코칭센터","logo":{"@type":"ImageObject","url":"https://wawaedu.kr/assets/images/logo.png"}},"mainEntityOfPage":{"@type":"WebPage","@id":"https://wawaedu.kr/news/【파일명】.html"}}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"홈","item":"https://wawaedu.kr/"},{"@type":"ListItem","position":2,"name":"입시뉴스","item":"https://wawaedu.kr/news-status.html"},{"@type":"ListItem","position":3,"name":"【제목】","item":"https://wawaedu.kr/news/【파일명】.html"}]}</script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="logo"><img src="../assets/images/logo.png" alt="와와 학습코칭센터" class="logo-img" /></a>
+      <nav class="main-nav" aria-label="주요 메뉴">
+        <ul>
+          <li><a href="../about.html">브랜드 소개</a></li>
+          <li><a href="../learning.html">학습 시스템</a></li>
+          <li><a href="../centers.html">센터 찾기</a></li>
+          <li><a href="../news-status.html">입시뉴스</a></li>
+          <li><a href="../class-status.html">수업현황</a></li>
+        </ul>
+      </nav>
+      <div class="header-cta">
+        <a href="../centers.html" class="btn btn--primary">상담 신청</a>
+        <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="breadcrumb"><a href="../index.html">홈</a> &nbsp;›&nbsp; <a href="../news-status.html">입시뉴스</a> &nbsp;›&nbsp; 【분류】</div>
+        <h1>【제목】</h1>
+        <p>🗓️ 【날짜】 &nbsp;|&nbsp; 🏷️ 【분류】</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <article class="legal article reveal">
+          <p>【도입 문단】</p>
+
+          <h2>【소제목 1】</h2>
+          <p>【내용】</p>
+
+          <h2>【소제목 2】</h2>
+          <p>【내용】</p>
+          <ul>
+            <li>【포인트 1】</li>
+            <li>【포인트 2】</li>
+          </ul>
+
+          <h2>【소제목 3】</h2>
+          <p>【마무리】</p>
+
+          <div class="cta-inline">
+            <h3>입시 준비, 와와와 함께</h3>
+            <p>무료 학습·입시 상담으로 우리 아이 방향을 함께 잡아드립니다.</p>
+            <a href="../centers.html" class="btn btn--primary">상담 신청하기</a>
+          </div>
+
+          <p style="text-align:center;margin-top:32px"><a href="../news-status.html" class="btn btn--ghost">← 다른 입시뉴스 보기</a></p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="../index.html" class="logo">와와 학습코칭센터</a>
+          <p>10년 학습코칭 노하우로 완성한 자기주도학습 코칭.<br />우리 아이가 스스로 공부하는 힘을 키웁니다.</p>
+        </div>
+        <div class="footer-col"><h4>바로가기</h4><a href="../about.html">브랜드 소개</a><a href="../learning.html">학습 시스템</a><a href="../centers.html">센터 찾기</a><a href="../news-status.html">입시뉴스</a><a href="../class-status.html">수업현황</a></div>
+        <div class="footer-col"><h4>고객지원</h4><a href="../news.html">공지사항</a><a href="../news.html">자주 묻는 질문</a><a href="../centers.html">상담 신청</a></div>
+        <div class="footer-col"><h4>브랜드</h4><a href="../about.html">와와</a><a href="../about.html">더블유플러스</a><a href="../about.html">글로리드</a><a href="../about.html">모두오름</a></div>
+      </div>
+      <div class="footer-bottom"><div>© <span data-year>2026</span> 와와 학습코칭센터. All rights reserved.</div></div>
+    </div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
