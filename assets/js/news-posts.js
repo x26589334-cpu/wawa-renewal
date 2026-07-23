@@ -21,6 +21,7 @@ window.WAWA_NEWS_POSTS = [
     category: "대학별 수시",
     title: "한국외대 수시전형 파헤치기 — 면접형·서류형·학교장추천·논술 수시등급과 캠퍼스별 최저",
     date: "2026-07-23",
+    thumb: "assets/images/news/한국외대1.jpg",
     excerpt: "2027학년도 기준 학생부종합(면접형·서류형·SW인재)·학교장추천·논술 전형과 서울·글로벌 캠퍼스별 수능최저, LD/LT학부 등 대표 학과를 정리했습니다.",
   },
   {
@@ -28,6 +29,7 @@ window.WAWA_NEWS_POSTS = [
     category: "대학별 수시",
     title: "숙명여대 수시전형 총정리 — 숙명인재 면접형·지역균형·논술 수시등급 가이드",
     date: "2026-07-23",
+    thumb: "assets/images/news/숙명여대1.jpg",
     excerpt: "2027학년도 기준 숙명인재 면접형·소프트웨어인재·지역균형선발·논술우수자 전형과 약학부·인공지능공학부 등 대표 학과, 달라진 최저 기준까지 정리했습니다.",
   },
   {
@@ -42,6 +44,7 @@ window.WAWA_NEWS_POSTS = [
     category: "대학별 수시",
     title: "동국대 수시전형 살펴보기 — Do Dream·학교장추천·논술 수시등급 전략",
     date: "2026-07-22",
+    thumb: "assets/images/news/동국대1.jpg",
     excerpt: "Do Dream(학생부종합)·학교장추천인재(교과)·논술 전형과 경찰행정·영화영상·불교학 등 대표 학과, 이번 수시 전략을 정리했습니다.",
   },
   {
@@ -49,6 +52,7 @@ window.WAWA_NEWS_POSTS = [
     category: "대학별 수시",
     title: "홍익대 수시전형 완벽분석 — 학교생활우수자·학교장추천·논술·미술우수자 수시등급",
     date: "2026-07-22",
+    thumb: "assets/images/news/홍익대1.jpg",
     excerpt: "학교생활우수자(종합)·학교장추천자(교과)·논술·미술우수자 전형과 계열모집·미술대학·건축 등 대표 학과, 수시 전략을 정리했습니다.",
   },
   {
