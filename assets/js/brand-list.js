@@ -26,13 +26,6 @@
   function cleanAddr(a) {
     return String(a || "").replace(/\s*(와와학습코칭센터|와와학습코칭|더블유플러스|글로리드|모두오름)?\s*(보습)?\s*학원\s*$/, "").replace(/\s{2,}/g, " ").trim();
   }
-  // 학교 정식명↔약칭 통일 + 소문자화
-  function norm(s) {
-    return String(s == null ? "" : s).toLowerCase()
-      .replace(/여자중학교/g, "여중").replace(/여자고등학교/g, "여고").replace(/여자초등학교/g, "여초")
-      .replace(/초등학교/g, "초").replace(/중학교/g, "중").replace(/고등학교/g, "고")
-      .replace(/\s+/g, " ");
-  }
 
   var all = (window.WAWA_CENTERS || []).filter(function (c) { return suffixOf(c.page) === key; });
 
@@ -41,16 +34,37 @@
   var searchEl = document.getElementById("brand-search");
   if (!grid) return;
 
-  function match(c, tokens) {
-    if (!tokens.length) return true;
-    var hay = norm(cleanName(c.name) + " " + c.region + " " + c.addr + " " + (c.dong || "") + " " + c.elem + " " + c.mid + " " + c.high);
-    return tokens.every(function (t) { return hay.indexOf(t) >= 0; });
+  // 학교 약칭 통일·띄어쓰기 무시는 search-kit.js 가 처리
+  var REL_FIELDS = ["region", "dong", "elem", "mid", "high"];
+  var hayOf = SearchKit.indexer(
+    function (c) { return c.name + "|" + c.addr; },
+    function (c) { return cleanName(c.name) + " " + c.region + " " + c.addr + " " + (c.dong || "") + " " + c.elem + " " + c.mid + " " + c.high; }
+  );
+
+  // 검색창 아래에 연관 검색어 줄을 만들어 둔다 (HTML 수정 없이 JS 로 삽입)
+  var relEl = null;
+  if (searchEl) {
+    relEl = document.createElement("div");
+    relEl.id = "brand-related";
+    relEl.hidden = true;
+    (searchEl.closest("form") || searchEl.parentNode).insertAdjacentElement("afterend", relEl);
+  }
+  function renderRelated(kw, list) {
+    if (!relEl) return;
+    if (!kw) { SearchKit.chips(relEl, [], null); return; }
+    var found = list.length > 0;
+    var items = found
+      ? SearchKit.related(list, kw, REL_FIELDS, { limit: 6 })
+      : SearchKit.suggest(all, hayOf, kw, REL_FIELDS, { limit: 6 });
+    SearchKit.chips(relEl, items, function (term) {
+      searchEl.value = term; searchEl.focus(); render(term);
+    }, found ? "연관 검색어" : "이렇게 찾아보세요");
   }
 
   function render(kw) {
-    var tokens = norm(kw || "").split(" ").filter(Boolean);
-    var list = all.filter(function (c) { return match(c, tokens); });
+    var list = all.filter(function (c) { return SearchKit.match(hayOf(c), kw || ""); });
     if (countEl) countEl.textContent = list.length + "개 지점";
+    renderRelated((kw || "").trim(), list);
 
     if (!list.length) {
       grid.innerHTML = '<p style="color:var(--color-muted);text-align:center;padding:40px 0">검색 결과가 없습니다. 다른 지역·학교명으로 검색해 보세요.</p>';

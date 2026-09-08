@@ -73,6 +73,7 @@
           </div>
           <div class="center-regions" id="center-regions" aria-label="지역 필터"></div>
           <p class="center-count" id="center-count"></p>
+          <div id="center-related" hidden></div>
         </div>
 
         <div class="center-grid" id="center-grid" aria-live="polite"></div>
@@ -150,6 +151,7 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/centers-data.js"></script>
+  <script src="assets/js/search-kit.js"></script>
   <script>
     (function () {
       var DATA = window.WAWA_CENTERS || [];
@@ -191,12 +193,24 @@
         render();
       });
 
-      // 학교 정식명칭↔약칭 통일 + 소문자화 (검색어·데이터 양쪽에 적용)
-      function norm(s) {
-        return String(s == null ? "" : s).toLowerCase()
-          .replace(/여자중학교/g, "여중").replace(/여자고등학교/g, "여고").replace(/여자초등학교/g, "여초")
-          .replace(/초등학교/g, "초").replace(/중학교/g, "중").replace(/고등학교/g, "고")
-          .replace(/\s+/g, " ");
+      // 검색 문자열 캐시 — 학교 약칭 통일·띄어쓰기 무시는 assets/js/search-kit.js 가 처리
+      var relEl = document.getElementById("center-related");
+      var REL_FIELDS = ["region", "dong", "elem", "mid", "high"];
+      var hayOf = SearchKit.indexer(
+        function (c) { return c.name + "|" + c.addr; },
+        function (c) { return c.name + " " + c.region + " " + c.addr + " " + (c.dong || "") + " " + c.elem + " " + c.mid + " " + c.high; }
+      );
+
+      // 검색 결과 아래 연관 검색어 — 결과에 많이 나오는 지역·동·학교를 검색어에 이어 제안
+      function renderRelated(list) {
+        if (!keyword) { SearchKit.chips(relEl, [], null); return; }
+        var found = list.length > 0;
+        var items = found
+          ? SearchKit.related(list, keyword, REL_FIELDS, { limit: 6 })
+          : SearchKit.suggest(DATA, hayOf, keyword, REL_FIELDS, { limit: 6 });
+        SearchKit.chips(relEl, items, function (term) {
+          searchEl.value = term; keyword = term; shown = PAGE; render(); searchEl.focus();
+        }, found ? "연관 검색어" : "이렇게 찾아보세요");
       }
 
       searchEl.addEventListener("input", function () {
@@ -206,13 +220,10 @@
       });
 
       function filtered() {
-        // 공백으로 분리한 모든 토큰이 다 들어있는 센터만 (지역+학교, 동+학교 등 조합 검색 지원)
-        var tokens = norm(keyword).split(" ").filter(Boolean);
+        // 지역 버튼 AND 검색어 (검색어는 낱말 전부 포함 + 띄어쓰기 무시)
         return DATA.filter(function (c) {
           if (activeRegion !== "전체" && c.region !== activeRegion) return false;
-          if (!tokens.length) return true;
-          var hay = norm(c.name + " " + c.region + " " + c.addr + " " + (c.dong || "") + " " + c.elem + " " + c.mid + " " + c.high);
-          return tokens.every(function (t) { return hay.indexOf(t) >= 0; });
+          return SearchKit.match(hayOf(c), keyword);
         });
       }
 
@@ -241,6 +252,7 @@
         }).join("");
         emptyEl.hidden = list.length !== 0;
         moreBtn.hidden = list.length <= shown;
+        renderRelated(list);
       }
 
       moreBtn.addEventListener("click", function () { shown += PAGE; render(); });

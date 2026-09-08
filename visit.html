@@ -216,6 +216,7 @@
           <div class="tf-line"><span class="tf-label">지역</span><div class="center-regions" id="region-filter"></div></div>
         </div>
         <p class="center-count" id="coach-count" style="margin-bottom:20px"></p>
+        <div id="coach-related" hidden style="margin-bottom:20px"></div>
 
         <div class="coach-grid" id="coach-grid" aria-live="polite"></div>
         <div class="center-empty" id="coach-empty" hidden>검색 결과가 없습니다. 다른 검색어나 필터를 선택해 보세요.</div>
@@ -275,6 +276,7 @@
 
   <script src="assets/js/main.js"></script>
   <script src="assets/js/coaches-data.js?v=2026082501"></script>
+  <script src="assets/js/search-kit.js"></script>
   <script>
     (function () {
       var DATA = window.WAWA_COACHES || [];
@@ -302,7 +304,15 @@
         return map[s] || s;
       }
       function coachSido(c) { var out = []; (c.sido || []).forEach(function (s) { var v = shortSido(s); if (v && out.indexOf(v) < 0) out.push(v); }); return out; }
-      function norm(s) { return String(s == null ? "" : s).toLowerCase().replace(/여자중학교/g,"여중").replace(/여자고등학교/g,"여고").replace(/초등학교/g,"초").replace(/중학교/g,"중").replace(/고등학교/g,"고").replace(/\s+/g," "); }
+      // 학교 약칭 통일·띄어쓰기 무시는 assets/js/search-kit.js 가 처리
+      var hayOf = SearchKit.indexer(
+        function (c) { return c.id || c.name + "|" + (c.intro || "").slice(0, 20); },
+        function (c) {
+          return (c.name||"") + " " + (c.sido||[]).join(" ") + " " + (c.sigungu||[]).join(" ") + " "
+               + (c.emdong||[]).join(" ") + " " + (c.schools||[]).join(" ") + " " + (c.subjects||[]).join(" ")
+               + " " + (c.grades||[]).join(" ") + " " + (c.intro||"");
+        }
+      );
       // 아바타 색 (이름 기반 고정)
       var AV = ["#2e9e6b","#3a7bd5","#e8833a","#8e6fd1","#d1607a","#2fa8a0","#c7913a","#5a7bbd"];
       function avatarColor(name) { var h = 0; for (var i=0;i<name.length;i++) h = name.charCodeAt(i) + ((h<<5)-h); return AV[Math.abs(h) % AV.length]; }
@@ -351,16 +361,12 @@
       bindFilter(regionEl, function (v){ fRegion=v; });
 
       function filtered() {
-        var tokens = norm(keyword).split(" ").filter(Boolean);
         return DATA.filter(function (c) {
           if (fType !== "전체" && (c.type||"").indexOf(fType) < 0) return false;
           if (fSubject !== "전체" && (c.subjects||[]).indexOf(fSubject) < 0) return false;
           if (fGrade !== "전체" && (c.grades||[]).indexOf(fGrade) < 0) return false;
           if (fRegion !== "전체") { var ss = coachSido(c); if (fRegion === "화상전국") { if (ss.length) return false; } else if (ss.indexOf(fRegion) < 0) return false; }
-          if (tokens.length) {
-            var hay = norm((c.name||"") + " " + (c.sido||[]).join(" ") + " " + (c.sigungu||[]).join(" ") + " " + (c.emdong||[]).join(" ") + " " + (c.schools||[]).join(" ") + " " + (c.subjects||[]).join(" ") + " " + (c.grades||[]).join(" ") + " " + (c.intro||""));
-            if (!tokens.every(function (t) { return hay.indexOf(t) >= 0; })) return false;
-          }
+          if (!SearchKit.match(hayOf(c), keyword)) return false;
           return true;
         });
       }
@@ -383,6 +389,24 @@
         gridEl.innerHTML = list.slice(0, shown).map(cardHtml).join("");
         document.getElementById("coach-empty").hidden = list.length !== 0;
         document.getElementById("coach-more").hidden = list.length <= shown;
+        renderRelated(list);
+      }
+
+      // 검색 결과 아래 연관 검색어 — 결과에 많이 나오는 과목·지역·학교를 검색어에 이어 제안
+      var relEl = document.getElementById("coach-related");
+      var REL_FIELDS = ["subjects", "grades", coachSido, function (c) { return (c.sigungu || []).map(function (x) { return String(x).split(" ").slice(-2).join(" "); }); }, "schools"];
+      function renderRelated(list) {
+        if (!keyword) { SearchKit.chips(relEl, [], null); return; }
+        var found = list.length > 0;
+        var items = found
+          ? SearchKit.related(list, keyword, REL_FIELDS, { limit: 6 })
+          : SearchKit.suggest(DATA, hayOf, keyword, REL_FIELDS, { limit: 6 });
+        SearchKit.chips(relEl, items, function (term) {
+          keyword = term;
+          var box = document.getElementById("hero-search");
+          if (box) { box.value = term; box.focus(); }
+          shown = PAGE; render();
+        }, found ? "연관 검색어" : "이렇게 찾아보세요");
       }
       document.getElementById("coach-more").addEventListener("click", function () { shown += PAGE; render(); });
 
