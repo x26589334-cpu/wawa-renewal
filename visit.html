@@ -279,6 +279,7 @@
           <div class="tf-line"><span class="tf-label">유형</span><div class="center-regions" id="type-filter"></div></div>
           <div class="tf-line"><span class="tf-label">과목</span><div class="center-regions" id="subject-filter"></div></div>
           <div class="tf-line"><span class="tf-label">지역</span><div class="center-regions" id="region-filter"></div></div>
+          <div class="tf-line" id="kw-line" hidden><span class="tf-label">검색어</span><div class="center-regions"><button type="button" class="region-btn active" id="kw-chip"></button></div></div>
         </div>
         <p class="center-count" id="coach-count" style="margin-bottom:20px"></p>
         <div id="coach-related" hidden style="margin-bottom:20px"></div>
@@ -454,6 +455,7 @@
         document.getElementById("coach-empty").hidden = list.length !== 0;
         document.getElementById("coach-more").hidden = list.length <= shown;
         renderRelated(list);
+        syncKeywordChip();
       }
 
       // 검색 결과 아래 연관 검색어 — 결과에 많이 나오는 과목·지역·학교를 검색어에 이어 제안
@@ -506,6 +508,29 @@
       // ── 히어로 검색 / 빠른찾기 ──
       function goList() { document.getElementById("teacher-list").scrollIntoView({ behavior: "smooth" }); }
       var heroSearch = document.getElementById("hero-search");
+
+      // 검색어는 과목·지역 필터와 함께(AND) 걸린다. 걸려 있는 게 안 보이면
+      // "필터가 안 먹는다"고 느끼게 되므로, 지울 수 있는 칩으로 항상 보여 준다.
+      var kwLine = document.getElementById("kw-line"), kwChip = document.getElementById("kw-chip");
+      function syncKeywordChip() {
+        if (keyword) { kwChip.textContent = keyword + "  ✕"; kwLine.hidden = false; }
+        else { kwLine.hidden = true; }
+      }
+      kwChip.addEventListener("click", function () {
+        keyword = ""; heroSearch.value = "";
+        shown = PAGE; syncChips(); render();
+      });
+
+      // 입력창을 지우면(x 버튼 포함) 곧바로 검색이 풀리게 한다. 필터는 그대로 둔다.
+      var kwTimer = null;
+      heroSearch.addEventListener("input", function () {
+        clearTimeout(kwTimer);
+        kwTimer = setTimeout(function () {
+          var v = heroSearch.value.trim();
+          if (v === keyword) return;
+          keyword = v; shown = PAGE; syncChips(); render();
+        }, 250);
+      });
       function resetFilters() { fType = "전체"; fSubject = "전체"; fRegion = "전체"; fGrade = "전체"; }
       function doHeroSearch() { resetFilters(); keyword = heroSearch.value.trim(); shown = PAGE; syncChips(); render(); goList(); }
       document.getElementById("hero-search-btn").addEventListener("click", doHeroSearch);
