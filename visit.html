@@ -62,6 +62,18 @@
     .qf-field select:focus { outline: none; border-color: var(--color-primary); }
     .qf-submit { width: 100%; margin-top: 6px; }
     .qf-note { text-align: center; font-size: 12.5px; color: var(--color-muted); font-family: var(--font-sans); margin: 14px 0 0; }
+    .qf-field input[type="text"], .qf-field input[type="tel"] { width: 100%; padding: 14px 16px; font-size: 15px; font-family: var(--font-sans); border: 1.5px solid var(--color-line); border-radius: 12px; background: #fff; color: var(--color-ink); box-sizing: border-box; }
+    .qf-field input::placeholder { color: #b9bcc4; }
+    .qf-field input:focus { outline: none; border-color: var(--color-primary); }
+    .qf-field[hidden] { display: none; }
+    .qf-grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .qf-opt { font-weight: 600; color: var(--color-muted); font-size: 12px; }
+    .qf-agree { display: flex; align-items: flex-start; gap: 9px; margin: 4px 0 16px; font-family: var(--font-sans); font-size: 13px; color: var(--color-muted); line-height: 1.5; cursor: pointer; }
+    .qf-agree input { width: 17px; height: 17px; margin: 1px 0 0; flex: none; accent-color: var(--color-primary); }
+    .qf-agree a { color: var(--color-muted); text-decoration: underline; }
+    .qf-browse { text-align: center; margin: 16px 0 0; padding-top: 15px; border-top: 1px solid var(--color-line); }
+    .qf-browse a { font-family: var(--font-sans); font-size: 13.5px; font-weight: 700; color: var(--color-muted); text-decoration: none; }
+    .qf-browse a:hover { color: var(--color-primary); }
 
     /* ===== 선생님 그리드 ===== */
     .teacher-filters { display: flex; flex-direction: column; gap: 12px; margin-bottom: 26px; }
@@ -110,6 +122,7 @@
       .coach-grid { grid-template-columns: 1fr; }
       .vh-actions { flex-direction: column; }
       .tf-label { width: auto; }
+      .qf-grid2 { grid-template-columns: 1fr; gap: 0; }
     }
   </style>
 </head>
@@ -168,35 +181,87 @@
         </div>
 
         <aside class="vh-right reveal">
-          <div class="qf-card">
-            <h3 class="qf-title">우리 아이 선생님 <span class="text-primary">빠른 찾기</span></h3>
-            <p class="qf-sub">지역·과목·학년만 고르면, 딱 맞는 선생님을 찾아 드려요.</p>
+          <form class="qf-card" id="qf-form" data-sheet="https://script.google.com/macros/s/AKfycbx0sPE3ZXLhc5hOOFsV7PmRC_RpbeQGVudf51bmG1sixuwZC7i0dqlb_WpOCn97nnc7/exec">
+            <h3 class="qf-title">선생님 <span class="text-primary">빠르게 상담신청</span> 하기</h3>
+            <p class="qf-sub">아래 내용만 남겨 주시면, 조건에 맞는 선생님을 찾아 연락드립니다.</p>
             <div class="qf-toggle" id="qf-toggle">
               <button type="button" data-type="방문" class="active">🏠 방문 수업</button>
               <button type="button" data-type="화상">💻 화상 수업</button>
             </div>
-            <div class="qf-field">
-              <label for="qf-region">지역</label>
-              <select id="qf-region"><option value="전체">전체 지역</option></select>
+
+            <div class="qf-grid2">
+              <div class="qf-field">
+                <label for="qf-name">이름 *</label>
+                <input type="text" id="qf-name" name="name" placeholder="홍길동" autocomplete="name" required />
+              </div>
+              <div class="qf-field">
+                <label for="qf-phone">연락처 *</label>
+                <input type="tel" id="qf-phone" name="phone" placeholder="010-0000-0000" autocomplete="tel" required />
+              </div>
             </div>
-            <div class="qf-field">
-              <label for="qf-subject">과목</label>
-              <select id="qf-subject"><option value="전체">전체 과목</option></select>
+
+            <div class="qf-field" data-only="방문" id="qf-f-region">
+              <label for="qf-region">지역 *</label>
+              <input type="text" id="qf-region" name="area" placeholder="예: 서울 노원구 중계동" required />
             </div>
-            <div class="qf-field">
-              <label for="qf-grade">학년</label>
-              <select id="qf-grade">
-                <option value="전체">전체 학년</option>
-                <option value="유아">유아</option>
-                <option value="초등">초등</option>
-                <option value="중등">중등</option>
-                <option value="고등">고등</option>
-                <option value="검정고시">검정고시</option>
+
+            <div class="qf-field" data-only="화상" id="qf-f-school" hidden>
+              <label for="qf-school">학교 <span class="qf-opt">(선택)</span></label>
+              <input type="text" id="qf-school" placeholder="예: 중계중학교" disabled />
+            </div>
+
+            <div class="qf-grid2">
+              <div class="qf-field">
+                <label for="qf-grade">학년 *</label>
+                <select id="qf-grade" name="grade" required>
+                  <option value="">선택</option>
+                  <option value="유아">유아</option>
+                  <option value="초등">초등</option>
+                  <option value="중등">중등</option>
+                  <option value="고등">고등</option>
+                  <option value="검정고시">검정고시</option>
+                </select>
+              </div>
+              <div class="qf-field">
+                <label for="qf-subject">과목 *</label>
+                <select id="qf-subject" required><option value="">선택</option></select>
+              </div>
+            </div>
+
+            <div class="qf-field" data-only="화상" id="qf-f-help" hidden>
+              <label for="qf-help">어떤 도움이 필요하신가요 <span class="qf-opt">(선택)</span></label>
+              <select id="qf-help" disabled>
+                <option value="">선택</option>
+                <option value="개념부터 차근차근">개념부터 차근차근</option>
+                <option value="문제풀이 위주">문제풀이 위주</option>
+                <option value="내신·시험 대비">내신·시험 대비</option>
+                <option value="선행 학습">선행 학습</option>
+                <option value="학습 습관·관리">학습 습관·관리</option>
               </select>
             </div>
-            <button type="button" class="btn btn--primary btn--lg qf-submit" id="qf-submit">맞춤 선생님 찾기</button>
+
+            <div class="qf-field">
+              <label for="qf-time">연락 가능한 시간 *</label>
+              <select id="qf-time" required>
+                <option value="">선택</option>
+                <option value="오전 (9~12시)">오전 (9~12시)</option>
+                <option value="오후 (12~18시)">오후 (12~18시)</option>
+                <option value="저녁 (18~21시)">저녁 (18~21시)</option>
+                <option value="언제든 괜찮아요">언제든 괜찮아요</option>
+              </select>
+            </div>
+
+            <label class="qf-agree">
+              <input type="checkbox" id="qf-agree" name="agree" required />
+              <span>개인정보 수집·이용에 동의합니다. <a href="privacy.html" target="_blank" rel="noopener">내용 보기</a></span>
+            </label>
+
+            <input type="hidden" name="memo" id="qf-memo" />
+            <button type="submit" class="btn btn--primary btn--lg qf-submit">상담 신청하기</button>
+            <p class="form-result" style="display:none;text-align:center;margin-top:14px;font-family:var(--font-sans);font-size:14px;color:var(--color-primary);font-weight:700"></p>
             <p class="qf-note">상담·매칭 비용은 무료입니다</p>
-          </div>
+            <p class="qf-browse"><a href="#teacher-list" id="qf-browse">먼저 선생님 목록 둘러보기 →</a></p>
+          </form>
         </aside>
       </div>
     </section>
@@ -342,9 +407,8 @@
       regionList.forEach(function (r) { regionEl.appendChild(makeBtn(r + " " + regionCounts[r], r)); });
       if (onlineOnly) regionEl.appendChild(makeBtn("화상(전국) " + onlineOnly, "화상전국"));
 
-      // 빠른찾기 드롭다운 채우기
-      var qfRegion = document.getElementById("qf-region"), qfSubject = document.getElementById("qf-subject");
-      regionList.forEach(function (r) { var o = document.createElement("option"); o.value = r; o.textContent = r + " (" + regionCounts[r] + ")"; qfRegion.appendChild(o); });
+      // 상담신청 폼 과목 드롭다운 채우기
+      var qfSubject = document.getElementById("qf-subject");
       subjOrder.forEach(function (s) { if (subjCounts[s] || s === "유아") { var o = document.createElement("option"); o.value = s; o.textContent = s; qfSubject.appendChild(o); } });
 
       // 필터 상태 → 버튼 하이라이트 동기화
@@ -449,20 +513,60 @@
       Array.prototype.forEach.call(document.querySelectorAll(".vh-tags a"), function (a) {
         a.addEventListener("click", function () { resetFilters(); keyword = a.getAttribute("data-tag"); heroSearch.value = keyword; shown = PAGE; syncChips(); render(); });
       });
-      // 빠른찾기
+      // ── 상담신청 폼 (방문/화상 전환 · 메모 조립 · 목록 둘러보기) ──
       var qfType = "방문";
+      var qfForm = document.getElementById("qf-form"),
+          qfRegionEl = document.getElementById("qf-region"),
+          qfSchoolEl = document.getElementById("qf-school"),
+          qfHelpEl = document.getElementById("qf-help"),
+          qfTimeEl = document.getElementById("qf-time"),
+          qfSubjectEl = document.getElementById("qf-subject"),
+          qfGradeEl = document.getElementById("qf-grade"),
+          qfMemoEl = document.getElementById("qf-memo");
+
+      // 탭에 맞는 칸만 보이게. 숨긴 칸은 disabled 로 꺼서 전송·필수검사에서 빠지게 한다.
+      function qfApplyTab() {
+        Array.prototype.forEach.call(qfForm.querySelectorAll("[data-only]"), function (box) {
+          var on = box.getAttribute("data-only") === qfType;
+          box.hidden = !on;
+          Array.prototype.forEach.call(box.querySelectorAll("input, select"), function (el) { el.disabled = !on; });
+        });
+      }
+
+      // 시트에는 이름/학년/연락처/주소/상담요청내용 칸만 있으므로
+      // 나머지(수업유형·과목·학교·원하는 수업·연락 가능 시간)는 memo 한 칸에 모아 보낸다.
+      function qfBuildMemo() {
+        var parts = ["[" + qfType + "수업]"];
+        if (qfSubjectEl.value) parts.push("과목: " + qfSubjectEl.value);
+        if (!qfSchoolEl.disabled && qfSchoolEl.value.trim()) parts.push("학교: " + qfSchoolEl.value.trim());
+        if (!qfHelpEl.disabled && qfHelpEl.value) parts.push("원하는 수업: " + qfHelpEl.value);
+        if (qfTimeEl.value) parts.push("연락 가능 시간: " + qfTimeEl.value);
+        qfMemoEl.value = parts.join(" / ");
+      }
+      qfForm.addEventListener("change", qfBuildMemo);
+      qfForm.addEventListener("input", qfBuildMemo);
+      // main.js 의 submit 핸들러가 먼저 등록돼 있으므로, 캡처 단계에서 memo 를 먼저 채운다.
+      document.addEventListener("submit", function (e) { if (e.target === qfForm) qfBuildMemo(); }, true);
+
       document.getElementById("qf-toggle").addEventListener("click", function (e) {
         var b = e.target.closest("button"); if (!b) return; qfType = b.getAttribute("data-type");
         Array.prototype.forEach.call(this.children, function (x) { x.classList.toggle("active", x === b); });
+        qfApplyTab(); qfBuildMemo();
       });
-      document.getElementById("qf-submit").addEventListener("click", function () {
+
+      // 신청 대신 목록만 보고 싶은 사람: 적어 둔 조건을 그대로 목록 필터로 옮긴다.
+      document.getElementById("qf-browse").addEventListener("click", function (e) {
+        e.preventDefault();
         fType = qfType;
-        fRegion = document.getElementById("qf-region").value;
-        fSubject = document.getElementById("qf-subject").value;
-        fGrade = document.getElementById("qf-grade").value;
-        keyword = ""; heroSearch.value = "";
+        fSubject = qfSubjectEl.value || "전체";
+        fGrade = qfGradeEl.value || "전체";
+        fRegion = "전체";
+        keyword = (!qfRegionEl.disabled && qfRegionEl.value.trim()) ? qfRegionEl.value.trim() : "";
+        heroSearch.value = keyword;
         shown = PAGE; syncChips(); render(); goList();
       });
+
+      qfApplyTab(); qfBuildMemo();
 
       // 홈/외부 ?q= 반영
       var qm = /[?&]q=([^&]*)/.exec(location.search);
