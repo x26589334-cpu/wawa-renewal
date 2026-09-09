@@ -201,8 +201,8 @@
             </div>
 
             <div class="qf-field" data-only="방문" id="qf-f-region">
-              <label for="qf-region">지역 *</label>
-              <input type="text" id="qf-region" name="area" placeholder="예: 서울 노원구 중계동" required />
+              <label for="qf-region">지역 * <span class="qf-opt">(거주 도로명주소까지)</span></label>
+              <input type="text" id="qf-region" name="area" placeholder="예: 서울 강남구 삼성로 212" required />
             </div>
 
             <div class="qf-field" data-only="화상" id="qf-f-school" hidden>
@@ -554,6 +554,15 @@
         qfApplyTab(); qfBuildMemo();
       });
 
+      // 주소를 다 적으면 목록 검색에 안 걸리므로 시·구·동만 남긴다.
+      // "서울 강남구 삼성로 212" -> "서울 강남구"
+      function qfRegionAreaOnly(v) {
+        var toks = String(v || "").trim().split(/\s+/).filter(function (t) {
+          return t && !/[0-9]/.test(t) && !/(로|길)$/.test(t);
+        });
+        return toks.slice(0, 3).join(" ");
+      }
+
       // 신청 대신 목록만 보고 싶은 사람: 적어 둔 조건을 그대로 목록 필터로 옮긴다.
       document.getElementById("qf-browse").addEventListener("click", function (e) {
         e.preventDefault();
@@ -561,7 +570,7 @@
         fSubject = qfSubjectEl.value || "전체";
         fGrade = qfGradeEl.value || "전체";
         fRegion = "전체";
-        keyword = (!qfRegionEl.disabled && qfRegionEl.value.trim()) ? qfRegionEl.value.trim() : "";
+        keyword = qfRegionEl.disabled ? "" : qfRegionAreaOnly(qfRegionEl.value);
         heroSearch.value = keyword;
         shown = PAGE; syncChips(); render(); goList();
       });
