@@ -181,7 +181,8 @@
         </div>
 
         <aside class="vh-right reveal">
-          <form class="qf-card" id="qf-form" data-sheet="https://script.google.com/macros/s/AKfycbx0sPE3ZXLhc5hOOFsV7PmRC_RpbeQGVudf51bmG1sixuwZC7i0dqlb_WpOCn97nnc7/exec">
+          <form class="qf-card" id="qf-form" data-sheet="https://script.google.com/macros/s/AKfycbznAb0ZOODlNp-ckR5fvkqtVQijwuJ9Gl0G4KxDrfp-K7zM4fcfMMp5qDhAbwNkvYQG/exec">
+            <input type="hidden" name="sheet" value="와와" /><input type="hidden" name="_form" value="와와-방문수업신청" /><input type="hidden" name="접수일시" value="" />
             <h3 class="qf-title">선생님 <span class="text-primary">빠르게 상담신청</span> 하기</h3>
             <p class="qf-sub">아래 내용만 남겨 주시면, 조건에 맞는 선생님을 찾아 연락드립니다.</p>
             <div class="qf-toggle" id="qf-toggle">
@@ -192,17 +193,17 @@
             <div class="qf-grid2">
               <div class="qf-field">
                 <label for="qf-name">이름 *</label>
-                <input type="text" id="qf-name" name="name" placeholder="홍길동" autocomplete="name" required />
+                <input type="text" id="qf-name" name="학생이름" placeholder="홍길동" autocomplete="name" required />
               </div>
               <div class="qf-field">
                 <label for="qf-phone">연락처 *</label>
-                <input type="tel" id="qf-phone" name="phone" placeholder="010-0000-0000" autocomplete="tel" required />
+                <input type="tel" id="qf-phone" name="학부모연락처" placeholder="010-0000-0000" autocomplete="tel" required />
               </div>
             </div>
 
             <div class="qf-field" data-only="방문" id="qf-f-region">
               <label for="qf-region">지역 * <span class="qf-opt">(거주 도로명주소까지)</span></label>
-              <input type="text" id="qf-region" name="area" placeholder="예: 서울 강남구 삼성로 212" required />
+              <input type="text" id="qf-region" name="거주 도로명주소" placeholder="예: 서울 강남구 삼성로 212" required />
             </div>
 
             <div class="qf-field" data-only="화상" id="qf-f-school" hidden>
@@ -213,7 +214,7 @@
             <div class="qf-grid2">
               <div class="qf-field">
                 <label for="qf-grade">학년 *</label>
-                <select id="qf-grade" name="grade" required>
+                <select id="qf-grade" name="학년" required>
                   <option value="">선택</option>
                   <option value="유아">유아</option>
                   <option value="초등">초등</option>
@@ -252,11 +253,11 @@
             </div>
 
             <label class="qf-agree">
-              <input type="checkbox" id="qf-agree" name="agree" required />
+              <input type="checkbox" id="qf-agree" required />
               <span>개인정보 수집·이용에 동의합니다. <a href="privacy.html" target="_blank" rel="noopener">내용 보기</a></span>
             </label>
 
-            <input type="hidden" name="memo" id="qf-memo" />
+            <input type="hidden" name="상담요청내용" id="qf-memo" />
             <button type="submit" class="btn btn--primary btn--lg qf-submit">상담 신청하기</button>
             <p class="form-result" style="display:none;text-align:center;margin-top:14px;font-family:var(--font-sans);font-size:14px;color:var(--color-primary);font-weight:700"></p>
             <p class="qf-note">상담·매칭 비용은 무료입니다</p>
@@ -608,5 +609,6 @@
       render();
     })();
   </script>
+<script>/* 접수일시를 전송 직전에 채움 (허브 시트의 와와 탭 열에 맞춤, 2026-09-18) */document.querySelectorAll("form[data-sheet]").forEach(function(f){f.addEventListener("submit",function(){var t=f.querySelector("input[name=\"접수일시\"]");if(t)t.value=new Date().toLocaleString("ko-KR");},true);});</script>
 </body>
 </html>
