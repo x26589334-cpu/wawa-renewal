@@ -674,4 +674,9 @@ h1, h2, h3, h4 {
 @media (max-width: 860px) {
   .mobile-cat-bar { background: rgba(255,255,255,.94) !important; border-bottom: 1px solid var(--color-line); }
   .mobile-cat-bar a.active { box-shadow: 0 3px 10px rgba(245,115,26,.28) !important; }
+  /* 헤더와 카테고리바가 둘 다 흰색이라 경계(#ECEDF0)가 거의 안 보였다.
+     그래서 둘이 130px 짜리 흰 덩어리로 읽히고, 헤더 안에서는 정중앙인 로고·상담신청이
+     그 덩어리 기준으로는 위로 치우쳐 보였다. 경계선만 한 톤 진하게 해 헤더를 제 바로 보이게 한다.
+     (로고·버튼 위치는 그대로 — 헤더 80px 안에서 오차 0.00px 중앙) */
+  .site-header { border-bottom: 1px solid #DFE3E9 !important; }
 }
