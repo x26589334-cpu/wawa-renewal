@@ -138,7 +138,7 @@
           '<div class="body">' +
             '<span class="cat">' + cat + "</span>" +
             "<h3>" + esc(p.title) + "</h3>" +
-            "<p>" + esc(p.excerpt) + "</p>" +
+            '<p style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden">' + esc(p.excerpt) + "</p>" +   /* 요약이 길어도 카드에는 3줄까지만 (2026-10-04) */
             '<span class="more" style="display:flex;justify-content:space-between;align-items:center">' +
               "<span>자세히 보기 →</span>" +
               '<span style="color:var(--color-muted);font-weight:600;font-size:13px">' + fmtDate(p.date) + "</span>" +
