@@ -19,6 +19,16 @@
  */
 window.WAWA_CLASS_POSTS = [
   {
+    slug: "2026-10-05-samsan-jung",
+    area: "인천 삼산동",
+    branch: "인천삼산점",
+    subject: "중등 내신 국어",
+    thumb: "assets/images/class/인천삼산점/인천삼산점1.jpg",
+    date: "2026-10-05",
+    title: "인천 삼산중 내신 · 삼산중학교 국어는 감으로 푸는 과목이 아닙니다 (삼산동 인천삼산점)",
+    excerpt: "국어는 공부할 게 없는 과목이 아니라 공부할 것이 눈에 안 보이는 과목입니다. 비문학 읽는 순서, 문학 작품 한 장 정리, 서술형 조건 맞추기를 정리했습니다.",
+  },
+  {
     slug: "2026-10-04-wonhwa-jung",
     area: "대구 장기동",
     branch: "대구장기점",
