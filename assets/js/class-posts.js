@@ -19,6 +19,16 @@
  */
 window.WAWA_CLASS_POSTS = [
   {
+    slug: "2026-10-06-namoe-jung",
+    area: "울산 남외동",
+    branch: "남외점",
+    subject: "중등 내신 사회",
+    thumb: "assets/images/class/남외점/남외점3.jpg",
+    date: "2026-10-06",
+    title: "울산 남외중 내신 · 남외중학교 사회, 자료 해석형 문항은 외워서 풀리지 않습니다 (남외동 남외점)",
+    excerpt: "사회 시험지에는 외워서 푸는 문항과 읽어서 푸는 문항이 섞여 있습니다. 지도·그래프를 읽는 순서, 역사를 띠로 정리하는 법, 용어 세 칸 정리를 담았습니다.",
+  },
+  {
     slug: "2026-10-05-samsan-jung",
     area: "인천 삼산동",
     branch: "인천삼산점",
