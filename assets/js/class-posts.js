@@ -19,6 +19,16 @@
  */
 window.WAWA_CLASS_POSTS = [
   {
+    slug: "2026-10-07-daedo-jung",
+    area: "포항 두호동",
+    branch: "두호점",
+    subject: "중등 내신 과학",
+    thumb: "assets/images/class/두호점/두호점7.jpg",
+    date: "2026-10-07",
+    title: "포항 대도중 내신 · 대도중학교 과학, 개념과 계산을 따로 잡아야 점수가 움직입니다 (두호동 두호점)",
+    excerpt: "과학은 이해했는데 왜 틀릴까요. 시험지는 개념 문항과 계산·해석 문항 두 덩어리로 나뉩니다. 단위 챙기기, 그래프 읽는 순서, 실험 문항 정리법을 담았습니다.",
+  },
+  {
     slug: "2026-10-06-namoe-jung",
     area: "울산 남외동",
     branch: "남외점",
