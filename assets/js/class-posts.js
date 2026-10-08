@@ -19,6 +19,16 @@
  */
 window.WAWA_CLASS_POSTS = [
   {
+    slug: "2026-10-09-janggok-go",
+    area: "시흥 장곡동",
+    branch: "장곡점",
+    subject: "고등 내신 수학",
+    thumb: "assets/images/class/schools/janggok-go.jpg",
+    date: "2026-10-09",
+    title: "시흥 장곡고 내신 · 장곡고등학교 고1 수학, 중학교 방식이 안 통하는 구간 (장곡동 장곡점)",
+    excerpt: "고1에서 수학이 무너지는 데는 이유가 있습니다. 범위·속도·묻는 방식이 한꺼번에 바뀌기 때문입니다. 복습 주기 잡는 법과 서술형에서 점수가 빠져나가는 네 자리를 정리했습니다.",
+  },
+  {
     slug: "2026-10-08-solbat-jung",
     area: "청주 복대동",
     branch: "복대점",
