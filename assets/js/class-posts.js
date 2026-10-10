@@ -19,6 +19,16 @@
  */
 window.WAWA_CLASS_POSTS = [
   {
+    slug: "2026-10-10-gaeun-jung",
+    area: "서울 돈암동",
+    branch: "종암점",
+    subject: "중등 내신 영어",
+    thumb: "assets/images/class/종암점/종암점2.jpg",
+    date: "2026-10-10",
+    title: "서울 개운중 내신 · 개운중학교 영어 문법, 외운 규칙이 문장에서 안 보일 때 (종암동 종암점)",
+    excerpt: "문법 용어는 말하는데 시험지 문장 앞에서는 멈춥니다. 외우는 것과 찾아내는 것은 다른 일입니다. 점수가 빠져나가는 네 자리와 수행평가 준비 순서를 정리했습니다.",
+  },
+  {
     slug: "2026-10-09-janggok-go",
     area: "시흥 장곡동",
     branch: "장곡점",
